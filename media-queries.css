@@ -1,0 +1,88 @@
+@media (min-width: 992px) and (max-width: 1199px) {
+
+	.proyecto-box .proyecto-box-icon { width: 60px; height: 60px; font-size: 32px; line-height: 60px; border-radius: 22px; }
+	
+	.nosotros-us-box-text { padding-right: 0; }
+	
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	
+	.navbar-expand-md .navbar-nav .nav-link { padding-left: 0.6rem; padding-right: 0.6rem; }
+	
+	.top-content { padding: 180px 0; }
+
+	.section-description p { padding: 0; }
+	
+	.proyecto-box .proyecto-box-icon { width: 50px; height: 50px; font-size: 26px; line-height: 50px; border-radius: 18px; }
+
+	.nosotros-us-box { margin-top: 80px; }
+	.nosotros-us-box:last-child { margin-top: 50px; }
+	.nosotros-us-box-text { padding-right: 0; text-align: center; }
+	
+	.more-proyecto-box .more-proyecto-box-icon { width: 50px; height: 50px; font-size: 26px; line-height: 50px; border-radius: 18px; }
+	
+	.portfolio-box h3:hover i { padding-left: 10px; }
+	
+	.blog-box h3:hover i { padding-left: 10px; }
+
+}
+
+@media (max-width: 767px) {
+	
+	.navbar.navbar-no-bg { background: rgba(17,75,54,0.7); }
+	.navbar-dark .navbar-toggler { background: rgba(17,75,54,0.7); }
+	.navbar-dark .navbar-toggler:focus { background: rgba(17,75,54,0.7);outline: 0; }
+	.navbar-expand-md .navbar-nav .nav-link { padding-top: 0.3rem; padding-bottom: 0.3rem; }
+
+	#logo {
+		width: 75%;
+	}
+
+	.top-content { padding: 140px 0; }
+	.top-content .top-big-link { margin-top: 25px; }
+	.top-content .top-big-link a.btn { margin-top: 10px; }
+	
+	.section-description p { padding: 0; }
+	
+	.proyecto-container { padding-bottom: 60px; }
+	.proyecto-box { text-align: center; }
+	.proyecto-box h3 { margin-top: 20px; padding-top: 10px; }
+	
+	.nosotros-us-box { margin-top: 80px; }
+	.nosotros-us-box:last-child { margin-top: 50px; }
+	.nosotros-us-box-text { padding-right: 0; text-align: center; }
+	
+	.more-proyecto-box { text-align: center; }
+	.more-proyecto-box h3 { margin-top: 20px; padding-top: 10px; }
+	
+	.portfolio-box { text-align: center; }
+	.portfolio-box-image { max-width: 540px; margin: 0 auto; }
+	
+	.blog-box { text-align: center; }
+	.blog-box-image { max-width: 540px; margin: 0 auto; }
+	.blog-box h3 { margin-top: 30px; }
+	
+	footer { text-align: center; }
+	
+}
+
+@media (max-width: 415px) {
+	
+	h1, h2 { font-size: 32px; }
+
+}
+
+
+/* Retina-ize images/icons */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+	
+	
+}

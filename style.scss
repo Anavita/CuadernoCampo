@@ -1,0 +1,400 @@
+/* Antes de hacer la llamada al archivo bootstrap.scss 
+   defino las variables que quiero modificar de Bootstrap  */
+
+/* Patrones de colores del proyecto */
+
+/* Asigno un color a la variable "principal" y la intercambio por la variable "primary" de la paleta de Bootstrap */
+$principal: #114B36;
+$primary: $principal;
+
+$secundaria: #f7deda;
+$secondary: $secundaria;
+
+
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+/****** HEAD ******/
+
+/* Estilos barra navbar */
+
+.navbar {
+    background: #114B36;
+    -o-transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -ms-transition: all .6s;
+    transition: all .6s;
+    backface-visibility: hidden;
+}
+ 
+.navbar.navbar-no-bg {
+    background-color: rgba(17,75,54,1);
+
+}
+ 
+.navbar-dark .navbar-nav {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Montserrat Alternates';
+}
+ 
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
+    border: 0;
+}
+ 
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+ 
+.navbar-dark .navbar-nav .nav-link:focus {
+    color: #fff;
+    outline: 0;
+}
+ 
+.navbar-expand-md .navbar-nav .nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+ 
+navbar-brand {
+    width: 136px;
+    background: url(./img/logo02.png) left center no-repeat;
+    border: 0;
+    text-indent: -99999px;
+}
+
+ /* Formulario Modal Login */
+
+ .btn {
+    font-family: 'Montserrat Alternates' ;
+}
+
+.modal-content {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .modal-body {
+    padding: 0;
+  }
+
+  .btn-close {
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+
+  .myform {
+    border-radius: 25px;
+    padding: 2em;
+    max-width: 100%;
+    color: #fff;
+    background-color: #fff;
+    @media (max-width: 576px) {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  }
+
+  input#correoLogin, input#passLogin {
+    border-radius: 25px;
+    background-color: #114B36;
+    color:#fff;
+  }
+
+  
+  input#correoLogin, input#passLogin:hover {
+    border-radius: 25px;
+    background-color: #f7deda;
+    color: #114B36;
+  }
+
+  .form-control:focus {
+    box-shadow: inset 0 -1px 0 #114B36;
+  }
+
+  .form-control {
+    background-color: inherit;
+    color: #fff;
+    padding-left: 0;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #fff;
+  }
+
+  .myform .btn {
+    width: 100%;
+    font-weight: 800;
+    background-color: #114B36;
+    border-radius: 25px;
+    padding: 0.5em 0;
+    color: #fff;
+  }
+
+  .myform .btn:hover {
+    background-color: #f7deda;
+    color: #114B36;
+  }
+
+  /* Solución para el problema del "modal-backdrop fade show" (no desaparecía
+     el cuadro de diálogo ni cerraba */
+
+  .modal-backdrop {
+    z-index: -1;
+  }
+  
+/* Efectos para los enlaces 
+
+a {
+    display: inline-block;
+    position: relative;
+    color: #114B36;
+    text-decoration: none;
+}
+
+a:after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    transition: all .8s;
+}
+
+a:hover:after {
+    width: 100%;
+    background: #fff; 
+} */
+
+/* Efecto parallax cabecera web */
+
+#portada {
+    background-image: url(./img/bosque.jpg);
+    height: 700px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+a.nav-link {
+    font-size: 16px;
+    color: white;
+}
+
+/****** BODY ******/
+
+/* Estilo general para tipografía */
+
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: #114B36;
+    text-align: justify;
+}
+
+/* Sobre el proyecto */
+
+#proyecto {
+    padding-top: 65px;
+    padding-bottom: 20px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.proyecto-box {
+    text-align: left;
+}
+
+.proyecto-box p, h2 {
+    text-align: justify;
+    padding-bottom: 20px;
+}
+
+.proyecto-box h3 {
+    margin-top: 0px;
+    padding: 0 0 10px 0;
+    text-align: center;
+}
+ 
+.proyecto-box .proyecto-box-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    line-height: 80px;
+    text-align: center;
+}
+ 
+.proyecto-box .proyecto-box-icon {
+    -o-transition: all .8s;
+    -moz-transition: all .8s;
+    -webkit-transition: all .8s;
+    -ms-transition: all .8s;
+    transition: all .8s;
+}
+ 
+.proyecto-box .proyecto-box-icon:hover{
+    -o-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    transform: scale(1.25);
+}
+
+/* Sobre nosotros */
+
+#nosotros {
+    background-image: url(./img/osezno.jpg);
+    height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.nosotros-box {
+    margin-top: 100px;
+}
+ 
+.nosotros-box-text {
+    padding-right: 30px;
+    text-align: left;
+}
+ 
+
+.nosotros-box-text h2 {
+    margin-top: 0; 
+    color:#fff;
+}
+ 
+.nosotros-box-text .medium-paragraph {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.nosotros-box-text a {
+    border-bottom: 1px dashed #9b59b6;
+}
+ 
+.nosotros-box-text a:hover,
+.nosotros-box-text a:focus {
+    border: 0;
+}
+ 
+.cuaderno {
+    border-radius: 50px;
+}
+
+/***** Blog *****/
+
+#blog {
+    padding-top: 65px;
+    padding-bottom: 20px;
+}
+ 
+.blog-box {
+    padding-top: 30px;
+    text-align: left;
+}
+ 
+.blog-box-image {
+    overflow: hidden;
+    border-radius: 25px;
+}
+ 
+.blog-box-image img {
+    -o-transition: all .8s;
+    -moz-transition: all .8s;
+    -webkit-transition: all .8s;
+    -ms-transition: all .8s;
+    transition: all .8s;
+}
+ 
+.blog-box-image:hover img {
+    -o-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    transform: scale(1.25);
+}
+ 
+.blog-box h3 {
+    margin-top: 30px;
+}
+.blog-box h3 a { color: #555; }
+.blog-box h3 a:hover, 
+.blog-box h3 a:focus { color: #9b59b6; }
+ 
+.blog-box h3 i {
+    padding-left: 10px;
+    color: #ccc;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    transition: all .3s;
+}
+.blog-box h3:hover i { padding-left: 15px; }
+ 
+.blog-box-date {
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: #aaa;
+    text-transform: uppercase;
+}
+ 
+.blog-box-date i {
+    padding-right: 5px;
+    color: #ddd;
+}
+ 
+.blog-container .section-bottom-button {
+    padding-top: 40px;
+    margin-bottom: 10px;
+}
+
+
+/* Formulario de Contacto */
+
+#contacto {
+    background-image: url(./img/lince.jpg);
+    padding-top: 65px;
+    padding-bottom: 20px;
+    height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+form {
+    margin-left: 20%;
+    margin-right: 20%;
+    font-family: 'Montserrat Alternates';
+}
+
+.form-label {
+    color:#114B36;
+    font-size: 20px;
+}
+
+textarea.form-control, input.form-control {
+    background-color: rgba(17,75,54,0.8);
+    border-radius: 25px;
+    color:#f7deda;
+    padding-left: 10px;
+}
+
+
+
+
+
+ 
+  
