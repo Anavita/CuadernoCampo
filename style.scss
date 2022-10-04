@@ -29,7 +29,6 @@ $secondary: $secundaria;
  
 .navbar.navbar-no-bg {
     background-color: rgba(17,75,54,1);
-
 }
  
 .navbar-dark .navbar-nav {
@@ -66,10 +65,10 @@ navbar-brand {
     text-indent: -99999px;
 }
 
- /* Formulario Modal Login */
+ /* Formulario Modal Login · Modal Registro */
 
  .btn {
-    font-family: 'Montserrat Alternates' ;
+    font-family: 'Montserrat Alternates';
 }
 
 .modal-content {
@@ -140,11 +139,21 @@ navbar-brand {
   }
 
   /* Solución para el problema del "modal-backdrop fade show" (no desaparecía
-     el cuadro de diálogo ni cerraba */
+     el cuadro de diálogo ni cerraba) */
 
   .modal-backdrop {
     z-index: -1;
   }
+
+
+  /* Mensaje que comprueba si la conexión, login y registro de usuario han sido satisfactorios*/
+
+  #mensaje, #mensaje2 {
+    color: #114B36;
+  }
+
+
+
   
 /* Efectos para los enlaces 
 

@@ -3,7 +3,7 @@
     session_start();
 
     //Petición al archivo que controla la duración de las sesiones
-    require('sesiones/sesiones.php');
+    require('php/sesiones.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Usuario Cuaderno de campo</title>
+    <title>Cuaderno de campo</title>
 
 <!-- Vinculación AJAX -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -25,8 +25,8 @@
   <!-- Vinculación fichero CSS media-queries -->
   <link rel="stylesheet" href="media-queries.css" />
 
-  <!-- Vinculación fichero CSS animaciones 
-    <link rel="stylesheet" href="animate.css">-->
+  <!-- Vinculación fichero CSS animaciones -->
+  <link rel="stylesheet" href="animate.css">
 
   <!-- Vinculación galería iconos SVG Bootstrap -->
   <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
@@ -50,7 +50,7 @@
   <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
     <div class="container-fluid">
       <!--Logo pequeño navbar que reedirige a la portada de inicio -->
-      <a class="navbar-brand" href="index.html"><img src="./img/logo02.png" width="75%"
+      <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%"
           alt="Logo pequeño Cuaderno de Campo" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,11 +74,21 @@
             <a class="nav-link" href="#contacto">Contacto</a>
           </li>
         </ul>
+
+        <!-- Grupo botones menú login/registro -->
+        <!-- Con ms-auto consigo alienar el div que contiene el grupo de botones al final del navbar-->
+        <div class="btn-group ms-auto" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ModalLogin">Login</a></li>
+            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#ModalReg">Registro</a></li>
+          </ul>
+        </div>
+
         <!-- Modal para el login -->
-        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalForm">
-          Login
-        </button>
-        <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+        <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-body">
@@ -98,32 +108,54 @@
                     <!-- DIV mensaje -->
                     <div class="mb-3" id="mensaje">
                     </div>
-
                     <button type="submit" class="btn btn-light mt-3">Login</button>
-                    <!-- Si no eres miembro reedirige a la página de registro -->
-                    <p>¿No eres miembro? Regístrare a través del siguiente formulario</p>
                   </form>
-                  <!-- Formulario de registro -->
-                  <h1 class="text-center">Registro Usuario</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+             <!-- Modal para el registro -->
+        <div class="modal fade modal-lg" id="ModalReg" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button type="button" class="btn-close btn-close-primary" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+                <div class="myform">
+                  <h1 class="text-center">Registro de usuario</h1>
                   <form id="regUsuario">
                     <div class="mb-3 mt-4">
-                      <label for="correoReg" class="form-label">Correo Electrónico</label>
-                      <input type="email" class="form-control" id="passReg" aria-describedby="emailHelp">
+                      <label for="nombreReg" class="form-label">Nombre</label>
+                      <input type="text" class="form-control" id="NombreReg">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 mt-4">
+                      <label for="apellidosReg" class="form-label">Apellidos</label>
+                      <input type="text" class="form-control" id="apellidosReg">
+                    </div>
+                    <div class="mb-3 mt-4">
+                      <label for="correoReg" class="form-label">Correo Electrónico</label>
+                      <input type="email" class="form-control" id="correoReg">
+                    </div>
+                    <div class="mb-3 mt-4">
+                      <label for="aliasReg" class="form-label">Alias</label>
+                      <input type="text" class="form-control" id="aliasReg">
+                    </div>
+                    <div class="mb-3 mt-4">
                       <label for="passReg" class="form-label">Contraseña</label>
                       <input type="password" class="form-control" id="passReg">
                     </div>
                     <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="termReg" required>
-                            <label for="terminos" class="form-check-label">Acepto los términos y condiciones</label>
-                            </input>
-                    <!-- DIV mensaje -->
-                    <div class="mb-3" id="mensaje">
+                        <input class="form-check-input" type="checkbox" id="termReg" required>
+                        <label for="terminos" class="form-check-label">Acepto los términos y condiciones</label>
+                        </input>
                     </div>
-
-                    <button type="submit" class="btn btn-light mt-3">Enviar</button>
-                    </form>
+                    <!-- DIV mensaje -->
+                    <div class="mb-3" id="mensaje2">
+                    </div>
+                    <button type="submit" class="btn btn-light mt-3">Registro</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -328,11 +360,6 @@
   <footer class="text-center text-lg-start bg-secondary text-muted">
     <!-- Sección Social media -->
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <!-- Izquierda: texto social media -->
-      <div class="me-5 d-none d-lg-block">
-        <span>Búscanos en redes sociales</span>
-      </div>
-      <!-- Derecha: botones social media -->
       <div>
         <div class="btn-group">
           <button type="button" class="btn btn-outline-primary">
@@ -464,12 +491,15 @@
         //Evito que se envíe por defecto
         e.preventDefault();
         //Creo un FormData con los datos del mismo formulario
-        var formData = new FormData(document.getElementById("loginUsuario"));
+       //var formData = new FormData(document.getElementById("loginUsuario"));
+       formData = new FormData();
+       formData.append("correoLogin",$('#correoLogin').val());
+       formData.append("passLogin",$('#passLogin').val());
 
         //Llamo a la función AJAX de jQuery
         $.ajax({
             //Defino la URL del archivo al cual se va a enviar los datos
-            url: "recursos/acceder.php",
+            url: "php/acceder.php",
             //Defino el tipo de método de envío
             type: "POST",
             //Defino el tipo de datos que van a ser enviados y recibidos
@@ -502,12 +532,18 @@
         //Evitamos que se envíe por defecto
         e.preventDefault();
         //Creamos un FormData con los datos del mismo formulario
-        var formData = new FormData(document.getElementById("regUsuario"));
+        //var formData = new FormData(document.getElementById("regUsuario"));
+        formData = new FormData();
+        formData.append("nombreReg",$('#nombreReg').val());
+        formData.append("apellidosReg",$('#apellidosReg').val());
+        formData.append("correoReg",$('#correoReg').val());
+        formData.append("aliasReg",$('#aliasReg').val());
+        formData.append("passReg",$('#passReg').val());
 
         //Llamamos a la función AJAX de jQuery
         $.ajax({
             //Definimos la URL del archivo al cual vamos a enviar los datos
-            url: "sesiones/registro.php",
+            url: "php/registro.php",
             //Definimos el tipo de método de envío
             type: "POST",
             //Definimos el tipo de datos que vamos a enviar y recibir
@@ -522,11 +558,10 @@
             processData: false
         }).done(function(echo){
             //Cuando recibamos respuesta, la mostramos
-            mensaje.html(echo);
-            mensaje.slideDown(500);
+            mensaje2.html(echo);
+            mensaje2.slideDown(500);
         });
     });
-
 </script>
 
 </body>
