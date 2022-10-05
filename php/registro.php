@@ -10,28 +10,41 @@
 	$passPOST = $_POST["passReg"];
 
 	//Filtro anti-XSS para proteger al usuario registrado de posibles ataques
-	$namePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $userPOST));
-	$lastnamePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $userPOST));
+	$namePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $namePOST));
+	$lastnamePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $lastnamePOST));
 	$userPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $userPOST));
-	$aliasPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $userPOST));
+	$aliasPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $aliasPOST));
 	$passPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $passPOST));
 
-	//Defino la cantidad máxima de caracteres
+	//Defino la cantidad máxima de caracteres, tal cual tengo en la tabla bd "registro"
+	$maxCaracteresName = "20";
+	$maxCaracteresLastname = "50";
 	$maxCaracteresUsername = "100";
+	$maxCaracteresAlias = "15";
 	$maxCaracteresPassword = "15";
 
 	//Si los input son de mayor tamaño, se "paraliza" el resto del código y muestra la respuesta correspondiente
-	if(strlen($userPOST) > $maxCaracteresUsername) {
-		//var_dump("Entró en if 1");
-		die('El nombre de usuario no puede superar los '.$maxCaracteresUsername.' caracteres');
+	if(strlen($namePOST) > $maxCaracteresName) {
+
+		die('El nombre de usuario no puede superar los '.$maxCaracteresName.' caracteres');
 	};
-	//Lo mismo con el input de la contraseña
+	if(strlen($lastnamePOST) > $maxCaracteresLastname) {
+	
+		die('Los apellidos de usuario no pueden superar los '.$maxCaracteresLastname.' caracteres');
+	};
+	if(strlen($userPOST) > $maxCaracteresUsername) {
+		
+		die('El correo de usuario no puede superar los '.$maxCaracteresUsername.' caracteres');
+	};
+	if(strlen($aliasPOST) > $maxCaracteresAlias) {
+
+		die('El alias de usuario no puede superar los '.$maxCaracteresName.' caracteres');
+	};
 	if(strlen($passPOST) > $maxCaracteresPassword) {
-		//var_dump("Entró en if 2");
 		die('La contraseña no puede superar los '.$maxCaracteresPassword.' caracteres');
 	};
 
-	//Se pasa el input del usuario a minúsculas
+	//Se pasa el input del correo de usuario a minúsculas
 	$userPOSTMinusculas = strtolower($userPOST);
 
 	//Escribo la consulta necesaria
@@ -42,13 +55,11 @@
 	$datosConsultaUsuarios = mysqli_fetch_array($resultadoConsultaUsuarios);
 	$userBD = $datosConsultaUsuarios['emailReg'];
 
-	//Si el input de usuario o contraseña está vacío, se muestra un mensaje de error
+	//Si el input del correo de usuario o contraseña está vacío, se muestra un mensaje de error
 	//Si el valor del input del usuario es igual a alguno que ya exista en la bd, se muestra un mensaje de error
 	if(empty($userPOST) || empty($passPOST)) {
-		//var_dump("Entró en if 3");
 		die('Debes introducir datos válidos');
 	} else if ($userPOSTMinusculas == $userBD) {
-		var_dump("Entró en if 4");
 		die('Ya existe un usuario con esa dirección de correo '.$userPOST.'');
 	}
 	else {
@@ -68,20 +79,19 @@
 
 		$passwordConSalt = crypt($passPOST, $salt);
 
-		//Consulta para introducir los datos
-		$consulta = "INSERT INTO `registro` (emailReg, passReg) 
-		VALUES ('$userPOST', '$passwordConSalt')";
+		//Consulta para introducir los datos (con la contraseña encriptada)
+		$consulta = "INSERT INTO `registro` (nombreReg, apellidosReg, emailReg, aliasReg, passReg) 
+		VALUES ('$namePOST','$lastnamePOST','$userPOST','$aliasPOST', '$passwordConSalt')";
 		
-		//Si los datos se introducen correctamente, mostramos los datos
-		//Sino, mostramos un mensaje de error
+		//Si los datos se introducen correctamente, se muestran los datos
+		//Sino, emerge un mensaje de error
 		if(mysqli_query($conexion, $consulta)) {
-			//var_dump("Entró en if 5");
 			die('<script>$(".registro").val("");</script>
 	Registrado con éxito <br>
 	Ya puedes acceder a tu cuenta <br>
 	<br>
 	Datos:<br>
-	Usuario: '.$userPOST.'<br>
+	Correo Usuario: '.$userPOST.'<br>
 	Contraseña: '.$passPOST);
 		} else {
 			die('Error');

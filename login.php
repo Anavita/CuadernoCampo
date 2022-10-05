@@ -128,7 +128,7 @@
                   <form id="regUsuario">
                     <div class="mb-3 mt-4">
                       <label for="nombreReg" class="form-label">Nombre</label>
-                      <input type="text" class="form-control" id="NombreReg">
+                      <input type="text" class="form-control" id="nombreReg">
                     </div>
                     <div class="mb-3 mt-4">
                       <label for="apellidosReg" class="form-label">Apellidos</label>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" id="termReg" required>
-                        <label for="terminos" class="form-check-label">Acepto los términos y condiciones</label>
+                        <label for="terminos" class="form-check-label text-primary">Acepto los términos y condiciones</label>
                         </input>
                     </div>
                     <!-- DIV mensaje -->
@@ -283,10 +283,10 @@
       <div class="row">
         <div class="col-md-4 blog-box wow fadeInUp">
           <div class="blog-box-image">
-            <img src="img/buho.jpg" alt="" data-at2x="img/buho.jpg">
+            <img src="img/flores.jpg" alt="" data-at2x="img/flores.jpg">
           </div>
-          <h3><a href="#">Acme branding</a> <i class="fas fa-angle-right"></i></h3>
-          <div class="blog-box-date"><i class="far fa-calendar"></i> March 2018</div>
+          <h3><a href="#">El mundo secreto de las abejas</a> <i class="fas fa-angle-right"></i></h3>
+          <div class="blog-box-date"><i class="far fa-calendar"></i> Sep 2022</div>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
           </p>
         </div>
@@ -294,17 +294,17 @@
           <div class="blog-box-image">
             <img src="img/prismaticos.jpg" alt="" data-at2x="img/prismaticos.jpg">
           </div>
-          <h3><a href="#">Acme branding</a> <i class="fas fa-angle-right"></i></h3>
-          <div class="blog-box-date"><i class="far fa-calendar"></i> March 2018</div>
+          <h3><a href="#">Salir al campo con niños</a> <i class="fas fa-angle-right"></i></h3>
+          <div class="blog-box-date"><i class="far fa-calendar"></i> Ago 2022</div>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
           </p>
         </div>
         <div class="col-md-4 blog-box wow fadeInUp">
           <div class="blog-box-image">
-            <img src="img/buho.jpg" alt="" data-at2x="img/buho.jpg">
+            <img src="img/mariposa.jpg" alt="" data-at2x="img/mariposa.jpg">
           </div>
-          <h3><a href="#">Acme branding</a> <i class="fas fa-angle-right"></i></h3>
-          <div class="blog-box-date"><i class="far fa-calendar"></i> March 2018</div>
+          <h3><a href="#">la delicadeza del mundo que nos rodea</a> <i class="fas fa-angle-right"></i></h3>
+          <div class="blog-box-date"><i class="far fa-calendar"></i> Jul 2022</div>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.
           </p>
         </div>
@@ -404,7 +404,7 @@
             <p>
               Here you can use rows and columns to organize your footer content. Lorem ipsum
               dolor sit amet, consectetur adipisicing elit.</p>
-            <img class="mx-auto d-block" src="./img/logo02.png" alt="Logo pequeño Cuaderno de Campo" />
+            <img class="mx-auto d-block" src="./img/logo03.png" alt="Logo pequeño Cuaderno de Campo" />
           </div>
           <!-- Grid column -->
 
@@ -481,10 +481,13 @@
   <!-- Footer -->
 
   <script>
-    //Guardo el controlador del div con ID mensaje en una variable
+    //Guardo el controlador del div con ID mensaje en una variable, tanto para
+    // el modal del login como el modal de registro
     var mensaje = $("#mensaje");
+    var mensaje2 = $("#mensaje2");
     //Posteriormente oculto el div
     mensaje.hide();
+    mensaje2.hide();
 
     //Cuando el formulario con ID loginUsuario se envíe...
     $("#loginUsuario").on("submit", function(e){
@@ -529,10 +532,8 @@
 
     //Cuando el formulario con ID acceso se envíe...
     $("#regUsuario").on("submit", function(e){
-        //Evitamos que se envíe por defecto
         e.preventDefault();
-        //Creamos un FormData con los datos del mismo formulario
-        //var formData = new FormData(document.getElementById("regUsuario"));
+
         formData = new FormData();
         formData.append("nombreReg",$('#nombreReg').val());
         formData.append("apellidosReg",$('#apellidosReg').val());
@@ -540,24 +541,16 @@
         formData.append("aliasReg",$('#aliasReg').val());
         formData.append("passReg",$('#passReg').val());
 
-        //Llamamos a la función AJAX de jQuery
+        //Mismos pasos que el formulario de login
         $.ajax({
-            //Definimos la URL del archivo al cual vamos a enviar los datos
             url: "php/registro.php",
-            //Definimos el tipo de método de envío
             type: "POST",
-            //Definimos el tipo de datos que vamos a enviar y recibir
             dataType: "HTML",
-            //Definimos la información que vamos a enviar
             data: formData,
-            //Deshabilitamos el caché
             cache: false,
-            //No especificamos el contentType
             contentType: false,
-            //No permitimos que los datos pasen como un objeto
             processData: false
         }).done(function(echo){
-            //Cuando recibamos respuesta, la mostramos
             mensaje2.html(echo);
             mensaje2.slideDown(500);
         });
