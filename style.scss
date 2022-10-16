@@ -138,8 +138,8 @@ navbar-brand {
     color: #114B36;
   }
 
-  /* Solución para el problema del "modal-backdrop fade show" (no desaparecía
-     el cuadro de diálogo ni cerraba) */
+  /* Solución para el problema del "modal-backdrop fade show" 
+     (no desaparecía el cuadro de diálogo ni cerraba) */
 
   .modal-backdrop {
     z-index: -1;
@@ -153,8 +153,6 @@ navbar-brand {
   }
 
 
-
-  
 /* Efectos para los enlaces 
 
 a {
@@ -248,7 +246,7 @@ p, h1, h2, h3, h4, h5, h6 {
     transition: all .8s;
 }
  
-.proyecto-box .proyecto-box-icon:hover{
+.proyecto-box .proyecto-box-icon:hover {
     -o-transform: scale(1.25);
     -moz-transform: scale(1.25);
     -webkit-transform: scale(1.25);

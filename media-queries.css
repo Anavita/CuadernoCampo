@@ -30,9 +30,9 @@
 
 @media (max-width: 767px) {
 	
-	.navbar.navbar-no-bg { background: rgba(17,75,54,0.7); }
-	.navbar-dark .navbar-toggler { background: rgba(17,75,54,0.7); }
-	.navbar-dark .navbar-toggler:focus { background: rgba(17,75,54,0.7);outline: 0; }
+	.navbar.navbar-no-bg { background: rgba(17,75,54,1); }
+	.navbar-dark .navbar-toggler { background: rgba(17,75,54,1); }
+	.navbar-dark .navbar-toggler:focus { background: rgba(17,75,54,1);outline: 0; }
 	.navbar-expand-md .navbar-nav .nav-link { padding-top: 0.3rem; padding-bottom: 0.3rem; }
 
 	#logo {

@@ -516,6 +516,7 @@
             //Para no permitir que los datos pasen como un objeto
             processData: false
         }).done(function(echo){
+          window.location.href ="pagina.php";
             //Una vez que la respuesta es recibida
             //se comprueba si la misma no es vacía
             if (echo !== "") {

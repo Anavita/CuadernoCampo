@@ -11053,8 +11053,8 @@ input#correoLogin, input#passLogin:hover {
   color: #114B36;
 }
 
-/* Solución para el problema del "modal-backdrop fade show" (no desaparecía
-   el cuadro de diálogo ni cerraba) */
+/* Solución para el problema del "modal-backdrop fade show" 
+   (no desaparecía el cuadro de diálogo ni cerraba) */
 .modal-backdrop {
   z-index: -1;
 }

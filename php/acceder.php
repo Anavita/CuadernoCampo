@@ -12,9 +12,7 @@
 	$userPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $userPOST));
 	$passPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $passPOST));
 
-	//Definimos la cantidad máxima de caracteres
-	//Esta comprobación se tiene en cuenta por si se llegase a modificar el "maxlength" del formulario
-	//Los valores deben coincidir con el tamaño máximo de la fila de la base de datos
+	//Se define la cantidad máxima de caracteres
 	$maxCaracteresUsername = "100";
 	$maxCaracteresPassword = "15";
 
@@ -28,23 +26,23 @@
 		die('La contraseña no puede superar los '.$maxCaracteresPassword.' caracteres');
 	};
 
-	//Pasamos el input del usuario a minúsculas para compararlo después con
+	//Se pasa el input del usuario a minúsculas para compararlo después con
 	//el campo "usernamelowercase" de la base de datos
 	$userPOSTMinusculas = strtolower($userPOST);
 
-	//Escribimos la consulta necesaria
+	//Consulta BD
 	$consulta = "SELECT * FROM `registro` WHERE emailReg='".$userPOSTMinusculas."'";
 
-	//Obtenemos los resultados
+	//Y obtención de los resultados
 	$resultado = mysqli_query($conexion, $consulta);
 	$datos = mysqli_fetch_array($resultado);
 
-	//Guardamos los resultados del nombre de usuario en minúsculas
+	//Se guardan los resultados del nombre de usuario en minúsculas
 	//y de la contraseña de la base de datos
 	$userBD = $datos['emailReg'];
 	$passwordBD = $datos['passReg'];
 
-	//Comprobamos si los datos son correctos
+	//Se comprueban si los datos son correctos
 	if($userBD == $userPOSTMinusculas /*and password_verify($passPOST, $passwordBD)*/){
 		session_start();
 		$_SESSION['usuario'] = $datos['emailReg'];
