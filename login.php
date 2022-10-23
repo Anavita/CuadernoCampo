@@ -250,7 +250,7 @@
     <div class="nosotros-container section-container section-container-gray-bg" id="nosotros">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-7 nosotros-box wow fadeInLeft">
+                <div class="col-12 col-lg-12 nosotros-box wow fadeInLeft">
                     <div class="about-us-box-text">
                         <h2>Sobre nosotros</h2>
                         <p class="medium-paragraph">
@@ -270,13 +270,22 @@
                             ut labore et.
                             Ut wisi enim ad minim veniam, quis nostrud.
                         </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore et.
+                            Ut wisi enim ad minim veniam, quis nostrud.
+                            Exerci tation ullamcorper suscipit <a href="#inicio">lobortis nisl</a> ut aliquip ex ea
+                            commodo consequat.
+                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl.
+                        </p>
                     </div>
                 </div>
-                <div class="col-12 col-lg-5 nosotros-box wow fadeInUp">
+                <!-- Queda pendiente arreglar este div -->
+                <!-- <div class="col-12 col-lg-5 nosotros-box wow fadeInUp">
                     <div class="about-us-box-img">
                         <img src="" class="cuaderno" alt="Sobre nosotros" data-at2x="">
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -497,7 +506,7 @@
     <!-- Footer -->
 
     <script>
-    //Guardo el controlador del div con ID mensaje en una variable, tanto para
+    //Guardo el controlador del div ckion ID mensaje en una variable, tanto para
     // el modal del login como el modal de registro
     var mensaje = $("#mensaje");
     var mensaje2 = $("#mensaje2");
@@ -505,6 +514,7 @@
     mensaje.hide();
     mensaje2.hide();
 
+    console.log("A33333333ntes de window.location");
     //Cuando el formulario con ID loginUsuario se envíe...
     $("#loginUsuario").on("submit", function(e) {
         //Evito que se envíe por defecto
@@ -515,6 +525,7 @@
         formData.append("correoLogin", $('#correoLogin').val());
         formData.append("passLogin", $('#passLogin').val());
 
+        console.log("A333ntes de window.location");
         //Llamo a la función AJAX de jQuery
         $.ajax({
             //Defino la URL del archivo al cual se va a enviar los datos
@@ -532,6 +543,7 @@
             //Para no permitir que los datos pasen como un objeto
             processData: false
         }).done(function(echo) {
+            console.log("Antes de window.location");
             window.location.href = "pagina.php";
             //Una vez que la respuesta es recibida
             //se comprueba si la misma no es vacía
