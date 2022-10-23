@@ -32,7 +32,7 @@ $secondary: $secundaria;
 }
  
 .navbar-dark .navbar-nav {
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
     font-weight: 600;
     font-family: 'Montserrat Alternates';
@@ -40,12 +40,19 @@ $secondary: $secundaria;
  
 .navbar-dark .navbar-nav .nav-link {
     color: #fff;
-    color: rgba(255, 255, 255, 0.8);
     border: 0;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
 }
- 
+
+
 .navbar-dark .navbar-nav .nav-link:hover {
     color: #fff;
+    background-size: 100% 2px;
 }
  
 .navbar-dark .navbar-nav .nav-link:focus {
@@ -153,29 +160,6 @@ navbar-brand {
   }
 
 
-/* Efectos para los enlaces 
-
-a {
-    display: inline-block;
-    position: relative;
-    color: #114B36;
-    text-decoration: none;
-}
-
-a:after {
-    content: "";
-    display: block;
-    margin: auto;
-    height: 2px;
-    width: 0px;
-    transition: all .8s;
-}
-
-a:hover:after {
-    width: 100%;
-    background: #fff; 
-} */
-
 /* Efecto parallax cabecera web */
 
 #portada {
@@ -187,11 +171,6 @@ a:hover:after {
     background-size: cover;
 }
 
-
-a.nav-link {
-    font-size: 16px;
-    color: white;
-}
 
 /****** BODY ******/
 
@@ -400,8 +379,4 @@ textarea.form-control, input.form-control {
 }
 
 
-
-
-
- 
   
