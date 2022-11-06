@@ -461,16 +461,22 @@
                             Mapa del sitio
                         </h6>
                         <p>
-                            <a href="#!" class="text-reset">Inicio</a>
+                            <a href="index.php" class="text-reset">Inicio</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Proyecto</a>
+                            <a href="#proyecto" class="text-reset">Proyecto</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Comunidad</a>
+                            <a href="#nosotros" class="text-reset">Conócenos</a>
                         </p>
                         <p>
-                            <a href="#!" class="text-reset">Contacto</a>
+                            <a href="#blog" class="text-reset">Blog</a>
+                        </p>
+                        <p>
+                            <a href="#galeria" class="text-reset">Galería</a>
+                        </p>
+                        <p>
+                            <a href="#contacto" class="text-reset">Contacto</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -514,7 +520,6 @@
     mensaje.hide();
     mensaje2.hide();
 
-    console.log("A33333333ntes de window.location");
     //Cuando el formulario con ID loginUsuario se envíe...
     $("#loginUsuario").on("submit", function(e) {
         //Evito que se envíe por defecto

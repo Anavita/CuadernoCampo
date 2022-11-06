@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Bienvenido a tu Cuaderno de Campo</title>
+<title>Crear ficha Cuaderno de Campo</title>
 </head>
 
 <!DOCTYPE html>
@@ -59,7 +59,6 @@
 </head>
 
 <body>
-
     <!-- HEAD -->
     <!-- Barra navbar -->
     <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
@@ -74,19 +73,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#proyecto">Proyecto</a>
+                        <a class="nav-link" href="pagina.php#proyecto">Proyecto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#nosotros">Conócenos</a>
+                        <a class="nav-link" href="pagina.php#nosotros">Conócenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#galeria">Galería</a>
+                        <a class="nav-link" href="pagina.php#galeria">Galería</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blog">Blog</a>
+                        <a class="nav-link" href="pagina.php#blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
+                        <a class="nav-link" href="pagina.php#contacto">Contacto</a>
                     </li>
                 </ul>
 				
@@ -108,9 +107,8 @@
             </div>
         </div>
     </nav>
-
-    <!-- Portada efecto parallax -->
-    <section>
+     <!-- Portada efecto parallax -->
+     <section>
         <div id="portada" class="row">
             <div class="row h-100">
                 <!--Div contenedor logo-->
@@ -124,200 +122,178 @@
     </section>
     <!-- Termina HEAD -->
 
-    <!--BODY -->
-    <!--  Sección "Sobre el proyecto" -->
-    <div class="proyecto-container section-container" id="proyecto">
+    <!--  Sección formulario "Crear Ficha" -->
+    <div class="ficha-container section-container" id="ficha">
         <div class="container">
             <div class="row">
-                <div class="col proyecto section-description wow fadeIn">
-                    <h2>Sobre el proyecto</h2>
-                    <div class="divider-1 wow fadeInUp"><span></span></div>
+                <div class="col ficha section-description wow fadeIn">
+                    <h2>Crear una nueva ficha</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 proyecto-box wow fadeInUp">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="proyecto-box-icon">
-                                <img src="./img/ciervo.png" alt="Ciervo" />
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h3>Investigación</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore
-                                et.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 proyecto-box wow fadeInDown">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="proyecto-box-icon">
-                                <img src="./img/lince.png" alt="Lince" />
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h3>Compartir</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore
-                                et.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 proyecto-box wow fadeInUp">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="proyecto-box-icon">
-                                <img src="./img/pescador.png" alt="Martín Pescador" />
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <h3>Comunidad naturalista</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore
-                                et.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Sección "Sobre nosotros" -->
-    <div class="nosotros-container section-container section-container-gray-bg" id="nosotros">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-lg-12 nosotros-box wow fadeInLeft">
-                    <div class="about-us-box-text">
-                        <h2>Sobre nosotros</h2>
-                        <p class="medium-paragraph">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                            sed do eiusmod tempor incididunt ut labore et. Ut wisi enim ad minim veniam, quis nostrud.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et.
-                            Ut wisi enim ad minim veniam, quis nostrud.
-                            Exerci tation ullamcorper suscipit <a href="#inicio">lobortis nisl</a> ut aliquip ex ea
-                            commodo consequat.
-                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et.
-                            Ut wisi enim ad minim veniam, quis nostrud.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore et.
-                            Ut wisi enim ad minim veniam, quis nostrud.
-                            Exerci tation ullamcorper suscipit <a href="#inicio">lobortis nisl</a> ut aliquip ex ea
-                            commodo consequat.
-                            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl.
-                        </p>
-                    </div>
-                </div>
-                <!-- Queda pendiente arreglar este div -->
-                <!-- <div class="col-12 col-lg-5 nosotros-box wow fadeInUp">
-                    <div class="about-us-box-img">
-                        <img src="" class="cuaderno" alt="Sobre nosotros" data-at2x="">
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Sección "Blog" -->
-    <div class="blog-container section-container" id="blog">
-        <div class="container">
-            <div class="row">
-                <div class="col blog section-description wow fadeIn">
-                    <h2>Blog</h2>
-                    <div class="divider-1 wow fadeInUp"><span></span></div>
-                    <p>Últimas entradas añadidas</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 blog-box wow fadeInUp">
-                    <div class="blog-box-image">
-                        <img src="img/flores.jpg" alt="" data-at2x="img/flores.jpg">
-                    </div>
-                    <h3><a href="#">El mundo secreto de las abejas</a> <i class="fas fa-angle-right"></i></h3>
-                    <div class="blog-box-date"><i class="far fa-calendar"></i> Sep 2022</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et.
-                    </p>
-                </div>
-                <div class="col-md-4 blog-box wow fadeInUp">
-                    <div class="blog-box-image">
-                        <img src="img/prismaticos.jpg" alt="" data-at2x="img/prismaticos.jpg">
-                    </div>
-                    <h3><a href="#">Salir al campo con niños</a> <i class="fas fa-angle-right"></i></h3>
-                    <div class="blog-box-date"><i class="far fa-calendar"></i> Ago 2022</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et.
-                    </p>
-                </div>
-                <div class="col-md-4 blog-box wow fadeInUp">
-                    <div class="blog-box-image">
-                        <img src="img/mariposa.jpg" alt="" data-at2x="img/mariposa.jpg">
-                    </div>
-                    <h3><a href="#">la delicadeza del mundo que nos rodea</a> <i class="fas fa-angle-right"></i></h3>
-                    <div class="blog-box-date"><i class="far fa-calendar"></i> Jul 2022</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col section-bottom-button wow fadeInUp">
-                    <a class="btn btn-primary btn-link-3" href="#">Ver más</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--  Sección "Contacto" -->
-    <div class="contacto-container section-container" id="contacto">
-        <div class="container">
-            <div class="row">
-                <div class="col contacto section-description wow fadeIn">
-                    <h2>Contacto</h2>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="container py-4">
-                    <form id="contactForm">
-
+                    <form id="fichaForm">
                         <div class="mb-3">
-                            <label class="form-label" for="name">Nombre</label>
-                            <input class="form-control" id="name" type="text" placeholder="Nombre" />
+                            <label class="form-label" for="nombreFicha">Nombre de la ficha</label>
+                            <input class="form-control" id="nombreFicha" type="text" placeholder="Nombre de la ficha (Fecha y nombre de la especie. Ej: 10022022OsoPardo)" />
                         </div>
-
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="form-label" for="coordenadasFicha">Lugar / Coordenadas</label>
+                                <input class="form-control" id="coordenadasFicha" type="text" placeholder="Lugar / Coordenadas" />
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label" for="fechaFicha">Fecha</label>
+                                <input class="form-control" id="fechaFicha" type="text" placeholder="Fecha" />
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label" for="horaFicha">Hora</label>
+                                <input class="form-control" id="horaFicha" type="text" placeholder="Hora" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Estado del cielo">
+                                    <option hidden >Estado del cielo</option>
+                                    <option value="1">Despejado</option>
+                                    <option value="2">Sol y nubes</option>
+                                    <option value="3">Nublado</option>
+                                    <option value="4">Tormentoso</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Clima">
+                                    <option hidden >Clima</option>
+                                    <option value="1">Cálido</option>
+                                    <option value="2">Frío</option>
+                                    <option value="3">Seco</option>
+                                    <option value="4">Húmedo</option>
+                                    <option value="5">Viento</option>
+                                    <option value="6">Tormenta</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label" for="nomEspFicha">Nombre de la especie</label>
+                                <input class="form-control" id="nomEspFicha" type="text" placeholder="Nombre de la especie" />
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label" for="nomCieFicha">Nombre científico de la especie</label>
+                                <input class="form-control" id="nomCieFicha" type="text" placeholder="Nombre científico de la especie" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <select class="form-select">
+                                    <optgroup label="Vertebrado" class="vertebrado">
+                                        <option hidden >Clasificación</option>
+                                        <option value="1-1">Pez</option>
+                                        <option value="1-2">Anfibio</option>
+                                        <option value="1-3">Reptil</option>
+                                        <option value="1-4">Ave</option>
+                                        <option value="1-5">Mamífero</option>
+                                    </optgroup>
+                                    <optgroup label="Invertebrado" class="invertebrado">
+                                        <option value="2-1">Porífero</option>
+                                        <option value="2-2">Celentéreo</option>
+                                        <option value="2-3">Guasano</option>
+                                        <option value="2-4">Artrópodo</option>
+                                        <option value="2-5">Molusco</option>
+                                        <option value="2-6">Equidermo</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Alimentación">
+                                    <option hidden > Tipo de alimentación</option>
+                                    <option value="1">Herbívoro</option>
+                                    <option value="3">Omnnívoro</option>
+                                    <option value="3">Carnívoro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Desarrollo embrionario">
+                                    <option hidden >Desarrollo embrionario</option>
+                                    <option value="1">Vivíparo</option>
+                                    <option value="2">Ovíparo</option>
+                                    <option value="3">Ovovivíparo</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Hábitat">
+                                    <option hidden >Hábitat</option>
+                                    <option value="1">Acuático</option>
+                                    <option value="2">Terrestre</option>
+                                    <option value="3">Mixto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Género">
+                                    <option hidden >Género</option>
+                                    <option value="1">Masculino</option>
+                                    <option value="2">Femenino</option>
+                                    <option value="3">NS</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-select" aria-label="Tamaño">
+                                    <option hidden >Tamaño aproximado</option>
+                                    <option value="1">Pequeño</option>
+                                    <option value="2">Mediano</option>
+                                    <option value="3">Grande</option>
+                                    <option value="4">Muy grande</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="mb-3">
-                            <label class="form-label" for="email">Correo Electrónico</label>
-                            <input class="form-control" id="email" type="email" placeholder="Correo Electrónico" />
+                            <label class="form-label" for="descripcionFicha">Descripción de la especie</label>
+                            <textarea class="form-control" id="descripcionFicha" type="text" placeholder="Descripción de la especie" style="height: 10rem;"></textarea>
                         </div>
-
                         <div class="mb-3">
-                            <label class="form-label" for="mensaje">Mensaje</label>
-                            <textarea class="form-control" id="mensaje" type="text" placeholder="Mensaje"
-                                style="height: 10rem;"></textarea>
+                            <label class="form-label" for="comportamientoFicha">Comportamiento de la especie</label>
+                            <textarea class="form-control" id="descripcionFicha" type="text" placeholder="Descripción de la especie" style="height: 10rem;"></textarea>
                         </div>
-
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" id="arch01">
+                                    <label class="input-group-text" for="arch01">Subir</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" id="arch02">
+                                    <label class="input-group-text" for="arch02">Subir</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" id="arch03">
+                                    <label class="input-group-text" for="arch03">Subir</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" id="arch04">
+                                    <label class="input-group-text" for="arch04">Subir</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="d-grid gap-2 col-2 mx-auto">
-                            <button class="btn btn-primary btn-sm" type="submit">Enviar</button>
+                            <button class="btn btn-primary btn-sm" type="submit">Crear</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Termina BODY -->
-
 
     <!-- FOOTER -->
     <footer class="text-center text-lg-start bg-secondary text-muted">

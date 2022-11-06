@@ -11268,4 +11268,19 @@ textarea.form-control, input.form-control {
   border-radius: 25px;
   color: #f7deda;
   padding-left: 10px;
+}
+
+/* Formulario creación de ficha según especie */
+#ficha {
+  background-image: url(./img/lince.jpg);
+  padding-top: 65px;
+  padding-bottom: 20px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+select.form-select {
+  margin-bottom: 15px;
 }/*# sourceMappingURL=style.css.map */
