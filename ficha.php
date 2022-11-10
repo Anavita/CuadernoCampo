@@ -153,7 +153,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <select class="form-select" aria-label="Estado del cielo">
+                                <select class="form-select" id="cieloFicha" aria-label="Estado del cielo">
                                     <option hidden >Estado del cielo</option>
                                     <option value="1">Despejado</option>
                                     <option value="2">Sol y nubes</option>
@@ -162,7 +162,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <select class="form-select" aria-label="Clima">
+                                <select class="form-select" id="climaFicha" aria-label="Clima">
                                     <option hidden >Clima</option>
                                     <option value="1">Cálido</option>
                                     <option value="2">Frío</option>
@@ -185,7 +185,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <select class="form-select">
+                                <select class="form-select" id="vertInvertFicha">
                                     <optgroup label="Vertebrado" class="vertebrado">
                                         <option hidden >Clasificación</option>
                                         <option value="1-1">Pez</option>
@@ -205,7 +205,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <select class="form-select" aria-label="Alimentación">
+                                <select class="form-select" id="alimentFicha" aria-label="Alimentación">
                                     <option hidden > Tipo de alimentación</option>
                                     <option value="1">Herbívoro</option>
                                     <option value="3">Omnnívoro</option>
@@ -215,7 +215,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <select class="form-select" aria-label="Desarrollo embrionario">
+                                <select class="form-select" id="desarrolloFicha" aria-label="Desarrollo embrionario">
                                     <option hidden >Desarrollo embrionario</option>
                                     <option value="1">Vivíparo</option>
                                     <option value="2">Ovíparo</option>
@@ -223,7 +223,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <select class="form-select" aria-label="Hábitat">
+                                <select class="form-select" id="habitatFicha" aria-label="Hábitat">
                                     <option hidden >Hábitat</option>
                                     <option value="1">Acuático</option>
                                     <option value="2">Terrestre</option>
@@ -233,7 +233,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                <select class="form-select" aria-label="Género">
+                                <select class="form-select" id="generoFicha" aria-label="Género">
                                     <option hidden >Género</option>
                                     <option value="1">Masculino</option>
                                     <option value="2">Femenino</option>
@@ -241,7 +241,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                                <select class="form-select" aria-label="Tamaño">
+                                <select class="form-select" id="tamanoFicha" aria-label="Tamaño">
                                     <option hidden >Tamaño aproximado</option>
                                     <option value="1">Pequeño</option>
                                     <option value="2">Mediano</option>
@@ -251,12 +251,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="descripcionFicha">Descripción de la especie</label>
-                            <textarea class="form-control" id="descripcionFicha" type="text" placeholder="Descripción de la especie" style="height: 10rem;"></textarea>
+                            <label class="form-label" for="descripFicha">Descripción de la especie</label>
+                            <textarea class="form-control" id="descripFicha" type="text" placeholder="Descripción de la especie" style="height: 10rem;"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="comportamientoFicha">Comportamiento de la especie</label>
-                            <textarea class="form-control" id="descripcionFicha" type="text" placeholder="Descripción de la especie" style="height: 10rem;"></textarea>
+                            <label class="form-label" for="comportFicha">Comportamiento de la especie</label>
+                            <textarea class="form-control" id="comportFicha" type="text" placeholder="Descripción de la especie" style="height: 10rem;"></textarea>
                         </div>
                         <div class="row">
                             <div class="col-6">
