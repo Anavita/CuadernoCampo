@@ -530,7 +530,6 @@
         formData.append("correoLogin", $('#correoLogin').val());
         formData.append("passLogin", $('#passLogin').val());
 
-        console.log("A333ntes de window.location");
         //Llamo a la función AJAX de jQuery
         $.ajax({
             //Defino la URL del archivo al cual se va a enviar los datos
@@ -548,7 +547,6 @@
             //Para no permitir que los datos pasen como un objeto
             processData: false
         }).done(function(echo) {
-            console.log("Antes de window.location");
             window.location.href = "pagina.php";
             //Una vez que la respuesta es recibida
             //se comprueba si la misma no es vacía

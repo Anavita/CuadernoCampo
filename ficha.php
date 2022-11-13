@@ -153,23 +153,25 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
+                            <label class="form-label" for="cieloFicha">Estado del cielo</label>
                                 <select class="form-select" id="cieloFicha" aria-label="Estado del cielo">
                                     <option hidden >Estado del cielo</option>
-                                    <option value="1">Despejado</option>
-                                    <option value="2">Sol y nubes</option>
-                                    <option value="3">Nublado</option>
-                                    <option value="4">Tormentoso</option>
+                                    <option value="Despejado">Despejado</option>
+                                    <option value="Sol y nubes">Sol y nubes</option>
+                                    <option value="Nublado">Nublado</option>
+                                    <option value="Tormentoso">Tormentoso</option>
                                 </select>
                             </div>
                             <div class="col-6">
+                            <label class="form-label" for="climaFicha">Tipo de clima</label>
                                 <select class="form-select" id="climaFicha" aria-label="Clima">
                                     <option hidden >Clima</option>
-                                    <option value="1">Cálido</option>
-                                    <option value="2">Frío</option>
-                                    <option value="3">Seco</option>
-                                    <option value="4">Húmedo</option>
-                                    <option value="5">Viento</option>
-                                    <option value="6">Tormenta</option>
+                                    <option value="Cálido">Cálido</option>
+                                    <option value="Frío">Frío</option>
+                                    <option value="Seco">Seco</option>
+                                    <option value="Húmedo">Húmedo</option>
+                                    <option value="Viento">Viento</option>
+                                    <option value="Tormenta">Tormenta</option>
                                 </select>
                             </div>
                         </div>
@@ -185,31 +187,33 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
+                            <label class="form-label" for="vertInvertFicha">Clasificación de la especie</label>
                                 <select class="form-select" id="vertInvertFicha">
                                     <optgroup label="Vertebrado" class="vertebrado">
                                         <option hidden >Clasificación</option>
-                                        <option value="1-1">Pez</option>
-                                        <option value="1-2">Anfibio</option>
-                                        <option value="1-3">Reptil</option>
-                                        <option value="1-4">Ave</option>
-                                        <option value="1-5">Mamífero</option>
+                                        <option value="Pez">Pez</option>
+                                        <option value="Anfibio">Anfibio</option>
+                                        <option value="Reptil">Reptil</option>
+                                        <option value="Ave">Ave</option>
+                                        <option value="Mamífero">Mamífero</option>
                                     </optgroup>
                                     <optgroup label="Invertebrado" class="invertebrado">
-                                        <option value="2-1">Porífero</option>
-                                        <option value="2-2">Celentéreo</option>
-                                        <option value="2-3">Guasano</option>
-                                        <option value="2-4">Artrópodo</option>
-                                        <option value="2-5">Molusco</option>
-                                        <option value="2-6">Equidermo</option>
+                                        <option value="Porífero">Porífero</option>
+                                        <option value="Celentéreo">Celentéreo</option>
+                                        <option value="Gusano">Gusano</option>
+                                        <option value="Artrópodo">Artrópodo</option>
+                                        <option value="Molusco">Molusco</option>
+                                        <option value="Equidermo">Equidermo</option>
                                     </optgroup>
                                 </select>
                             </div>
                             <div class="col-6">
+                            <label class="form-label" for="alimentFicha">Tipo de alimentación</label>
                                 <select class="form-select" id="alimentFicha" aria-label="Alimentación">
                                     <option hidden > Tipo de alimentación</option>
-                                    <option value="1">Herbívoro</option>
-                                    <option value="3">Omnnívoro</option>
-                                    <option value="3">Carnívoro</option>
+                                    <option value="Herbívoro">Herbívoro</option>
+                                    <option value="Omnívoro">Omnnívoro</option>
+                                    <option value="Carnívoro">Carnívoro</option>
                                 </select>
                             </div>
                         </div>
@@ -217,17 +221,17 @@
                             <div class="col-6">
                                 <select class="form-select" id="desarrolloFicha" aria-label="Desarrollo embrionario">
                                     <option hidden >Desarrollo embrionario</option>
-                                    <option value="1">Vivíparo</option>
-                                    <option value="2">Ovíparo</option>
-                                    <option value="3">Ovovivíparo</option>
+                                    <option value="Vivíparo">Vivíparo</option>
+                                    <option value="Ovíparo">Ovíparo</option>
+                                    <option value="Ovovivíparo">Ovovivíparo</option>
                                 </select>
                             </div>
                             <div class="col-6">
                                 <select class="form-select" id="habitatFicha" aria-label="Hábitat">
                                     <option hidden >Hábitat</option>
-                                    <option value="1">Acuático</option>
-                                    <option value="2">Terrestre</option>
-                                    <option value="3">Mixto</option>
+                                    <option value="Acuático">Acuático</option>
+                                    <option value="Terrestre">Terrestre</option>
+                                    <option value="Mixto">Mixto</option>
                                 </select>
                             </div>
                         </div>
@@ -235,18 +239,18 @@
                             <div class="col-6">
                                 <select class="form-select" id="generoFicha" aria-label="Género">
                                     <option hidden >Género</option>
-                                    <option value="1">Masculino</option>
-                                    <option value="2">Femenino</option>
-                                    <option value="3">NS</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="NS">NS</option>
                                 </select>
                             </div>
                             <div class="col-6">
                                 <select class="form-select" id="tamanoFicha" aria-label="Tamaño">
                                     <option hidden >Tamaño aproximado</option>
-                                    <option value="1">Pequeño</option>
-                                    <option value="2">Mediano</option>
-                                    <option value="3">Grande</option>
-                                    <option value="4">Muy grande</option>
+                                    <option value="Pequeño">Pequeño</option>
+                                    <option value="Mediano">Mediano</option>
+                                    <option value="Grande">Grande</option>
+                                    <option value="Muy grande">Muy grande</option>
                                 </select>
                             </div>
                         </div>
@@ -418,6 +422,72 @@
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
+
+    <script>
+  
+
+    //Cuando el formulario con ID #fichaForm se envíe...
+        $("#fichaForm").on("submit", function(e) {
+            //Evito que se envíe por defecto
+            e.preventDefault();
+            //Creo un FormData con los datos del mismo formulario
+            formData = new FormData();
+            formData.append("nombreFicha", $('#nombreFicha').val());
+            formData.append("coordenadasFicha", $('#coordenadasFicha').val());
+            formData.append("fechaFicha", $('#fechaFicha').val());
+            formData.append("horaFicha", $('#horaFicha').val());
+            formData.append("cieloFicha", $('#cieloFicha').val());
+            formData.append("climaFicha", $('#climaFicha').val());
+            formData.append("nomEspFicha", $('#nomEspFicha').val());
+            formData.append("nomCieFicha", $('#nomCieFicha').val());
+            formData.append("vertInvertFicha", $('#vertInvertFicha').val());
+            formData.append("alimentFicha", $('#alimentFicha').val());
+            formData.append("desarrolloFicha", $('#desarrolloFicha').val());
+            formData.append("habitatFicha", $('#habitatFicha').val());
+            formData.append("generoFicha", $('#generoFicha').val());
+            formData.append("tamanoFicha", $('#tamanoFicha').val());
+            formData.append("descripFicha", $('#descripFicha').val());
+            formData.append("comportFicha", $('#comportFicha').val());
+            formData.append("arch01", $('#arch01').val());
+            formData.append("arch02", $('#arch02').val());
+            formData.append("arch03", $('#arch03').val());
+            formData.append("arch04", $('#arch04').val());
+            
+            console.log("1ª Prueba");
+            //Llamo a la función AJAX de jQuery
+            $.ajax({
+                //Defino la URL del archivo al cual se va a enviar los datos
+                url: "php/registroFicha.php",
+                //Defino el tipo de método de envío
+                type: "POST",
+                //Defino el tipo de datos que van a ser enviados y recibidos
+                dataType: "HTML",
+                //Información que se va a enviar
+                data: formData,
+                //Deshabilitar el caché
+                cache: false,
+                //No especificar el contentType
+                contentType: false,
+                //Para no permitir que los datos pasen como un objeto
+                processData: false
+            }).done(function(echo) {
+                console.log("2ª Prueba");
+                window.location.href = "inventario.php";
+                //Una vez que la respuesta es recibida
+                //se comprueba si la misma no es vacía
+                if (echo !== "") {
+                   
+                    //Si hay respuesta (error), mostramos el mensaje
+                    console.log("3ª Prueba");
+                } else {
+                    console.log("4ª Prueba");
+                    //Si no hay respuesta, redirecionamos a donde sea necesario
+                    //Si está vacío, recarga la página
+                    window.location.replace("");
+                }
+            });
+        });
+    </script>
 	
 </body>
 </html>

@@ -1,3 +1,25 @@
+<?php
+	//Se reanuda la sesión
+	session_start();
+
+	//Se comprueba si el usario está logueado
+	//Si no lo está, se le redirecciona al index
+	//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
+	if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+		header('Location: index.php');
+	} else {
+		$estado = $_SESSION['usuario'];
+		$salir = '<a href="php/salir.php" target="_self">Salir</a>';
+		require('php/sesiones.php');
+	};
+?>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bienvenido a tu Cuaderno de Campo</title>
+</head>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,14 +27,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuaderno de Campo</title>
+    <title>Cuaderno de campo</title>
+
+    <!-- Vinculación AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <sript src="script.js"></sript>
-
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.6.min.js"></script>
 
     <!-- Vinculación fichero CSS -->
     <link rel="stylesheet" href="style.css" />
@@ -20,8 +40,8 @@
     <!-- Vinculación fichero CSS media-queries -->
     <link rel="stylesheet" href="media-queries.css" />
 
-    <!-- Vinculación fichero CSS animaciones 
-    <link rel="stylesheet" href="animate.css">-->
+    <!-- Vinculación fichero CSS animaciones -->
+    <link rel="stylesheet" href="animate.css">
 
     <!-- Vinculación galería iconos SVG Bootstrap -->
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
@@ -39,12 +59,13 @@
 </head>
 
 <body>
+
     <!-- HEAD -->
     <!-- Barra navbar -->
     <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
         <div class="container-fluid">
             <!--Logo pequeño navbar que reedirige a la portada de inicio -->
-            <a class="navbar-brand" href="index.html"><img src="./img/logo02.png" width="75%"
+            <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%"
                     alt="Logo pequeño Cuaderno de Campo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,53 +74,36 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#proyecto">Proyecto</a>
+                        <a class="nav-link" href="#proyecto">Proyecto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#nosotros">Conócenos</a>
+                        <a class="nav-link" href="#nosotros">Conócenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#galeria">Galería</a>
+                        <a class="nav-link" href="#galeria">Galería</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#blog">Blog</a>
+                        <a class="nav-link" href="#blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#contacto">Contacto</a>
+                        <a class="nav-link" href="#contacto">Contacto</a>
                     </li>
                 </ul>
-                <!-- Modal LOGIN -->
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalForm">
-                    Login
-                </button>
-                <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="ModalFormLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <button type="button" class="btn-close btn-close-primary" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                                <div class="myform">
-                                    <h1 class="text-center">Acceso Usuario</h1>
-                                    <form>
-                                        <div class="mb-3 mt-4">
-                                            <label for="exampleInputEmail1" class="form-label">Correo
-                                                Electrónico</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                aria-describedby="emailHelp">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1">
-                                        </div>
-                                        <button type="submit" class="btn btn-light mt-3">LOGIN</button>
-                                        <!-- Si no eres miembro reedirige a la página de registro -->
-                                        <p>¿No eres miembro?<a href="registro.html">Regístrate</a></p>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+				
+                <!-- Menú usuario cuando está logueado -->
+                <!-- Con ms-auto consigo alienar el div que contiene el grupo de botones al final del navbar-->
+                <div class="btn-group ms-auto" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Bienvenid@ <?php echo $estado; ?>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <li><a class="dropdown-item" href="ficha.php">Cubrir ficha</a></li>
+                        <li><a class="dropdown-item" href="#">Inventario</a></li>
+						<li><a class="dropdown-item" href="#">Galería</a></li>
+						<li><a class="dropdown-item" href="#">Mapa</a></li>
+						<li><a class="dropdown-item" href="#"><?php echo $salir; ?></p></a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -109,7 +113,7 @@
     <section>
         <div id="portada" class="row">
             <div class="row h-100">
-                <!--DIV contenedor logo-->
+                <!--Div contenedor logo-->
                 <div class="col-md-12 align-self-center">
                     <img src="./img/logo.png" id="logo" class="mx-auto d-block" alt="Logo Cuaderno de Campo" />
                 </div>
@@ -118,92 +122,17 @@
             </div>
         </div>
     </section>
+    <!-- Termina HEAD -->
 
+    <!--BODY -->
 
-    <!-- Formulario de registro de usuari@s -->
-    <div class="contacto-container section-container" id="regUsuario">
-        <div class="container">
-            <div class="row">
-                <div class="col contacto section-description wow fadeIn">
-                    <h2>Registro de usuario</h2>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="container py-4">
-                    <form class="needs-validation" novalidate>
-                        <div class="mb-3">
-                            <label class="form-label" for="nombreReg">Nombre</label>
-                            <input class="form-control" id="nombreReg" type="text" required />
-                            <div class="invalid-feedback">
-                                Es necesario poner un nombre
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="apellidosReg">Apellidos</label>
-                            <input class="form-control" id="apellidosReg" type="text" required />
-                            <div class="invalid-feedback">
-                                Es necesario poner apellidos
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="emailReg">Correo Electrónico</label>
-                            <input class="form-control" id="emailReg" type="email" required />
-                            <div class="invalid-feedback">
-                                Es necesario poner un correo electrónico
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="passReg">Contraseña</label>
-                            <input class="form-control" id="passReg" type="password" required />
-                            <div class="invalid-feedback">
-                                Es necesario escribir una contraseña
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="repassReg">Confirma la contraseña</label>
-                            <input class="form-control" id="repassReg" type="password" required />
-                            <div class="invalid-feedback">
-                                Es necesario escribir de nuevo la contraseña
-                            </div>
-                        </div>
-                        
-                        <!-- Check términos y condiciones -->
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" id="termReg" required>
-                            <label for="terminos" class="form-check-label">Acepto los términos y condiciones</label>
-                            </input>
-                            <div class="invalid-feedback">
-                                Es necesario aceptar los términos y condiciones
-                            </div>
-                        </div>
-
-                        <div class="d-grid gap-2 col-2 mx-auto">
-                            <button class="btn btn-primary btn-sm" type="submit">Enviar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
+    <h1>Inventario</h1>
 
 
     <!-- FOOTER -->
     <footer class="text-center text-lg-start bg-secondary text-muted">
         <!-- Sección Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-            <!-- Izquierda: texto social media -->
-            <div class="me-5 d-none d-lg-block">
-                <span>Búscanos en redes sociales</span>
-            </div>
-            <!-- Derecha: botones social media -->
             <div>
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-primary">
@@ -248,7 +177,7 @@
                         <p>
                             Here you can use rows and columns to organize your footer content. Lorem ipsum
                             dolor sit amet, consectetur adipisicing elit.</p>
-                        <img class="mx-auto d-block" src="./img/logo02.png" alt="Logo pequeño Cuaderno de Campo" />
+                        <img class="mx-auto d-block" src="./img/logo03.png" alt="Logo pequeño Cuaderno de Campo" />
                     </div>
                     <!-- Grid column -->
 
@@ -323,32 +252,6 @@
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-
-    <!--Script js de Bootstrap para validar el formulario de registro -->
-    <script>
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
-            'use strict'
-
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.querySelectorAll('.needs-validation')
-
-            // Loop over them and prevent submission
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                })
-        })()
-    </script>
-    
-
+	
 </body>
-
 </html>
