@@ -98,9 +98,9 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item" href="ficha.php">Cubrir ficha</a></li>
-                        <li><a class="dropdown-item" href="#">Inventario</a></li>
+                        <li><a class="dropdown-item" href="inventario.php">Inventario</a></li>
 						<li><a class="dropdown-item" href="#">Galería</a></li>
-						<li><a class="dropdown-item" href="#">Mapa</a></li>
+						<li><a class="dropdown-item" href="mapa.php">Mapa</a></li>
 						<li><a class="dropdown-item" href="#"><?php echo $salir; ?></p></a></li>
                     </ul>
                 </div>
@@ -138,15 +138,21 @@
                             <input class="form-control" id="nombreFicha" type="text" placeholder="Nombre de la ficha (Fecha y nombre de la especie. Ej: 10022022OsoPardo)" />
                         </div>
                         <div class="row">
-                            <div class="col-4">
-                                <label class="form-label" for="coordenadasFicha">Lugar / Coordenadas</label>
-                                <input class="form-control" id="coordenadasFicha" type="text" placeholder="Lugar / Coordenadas" />
+                            <div class="col-6">
+                                <label class="form-label" for="latitudFicha">Coordenadas · Latitud</label>
+                                <input class="form-control" id="latitudFicha" type="text" placeholder="Latitud" />
                             </div>
-                            <div class="col-4">
+                            <div class="col-6">
+                                <label class="form-label" for="longitudFicha">Coordenadas · Longitud</label>
+                                <input class="form-control" id="longitudFicha" type="text" placeholder="Longitud" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
                                 <label class="form-label" for="fechaFicha">Fecha</label>
                                 <input class="form-control" id="fechaFicha" type="text" placeholder="Fecha" />
                             </div>
-                            <div class="col-4">
+                            <div class="col-6">
                                 <label class="form-label" for="horaFicha">Hora</label>
                                 <input class="form-control" id="horaFicha" type="text" placeholder="Hora" />
                             </div>
@@ -219,6 +225,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
+                            <label class="form-label" for="desarrolloFicha">Desarrollo embrionario</label>
                                 <select class="form-select" id="desarrolloFicha" aria-label="Desarrollo embrionario">
                                     <option hidden >Desarrollo embrionario</option>
                                     <option value="Vivíparo">Vivíparo</option>
@@ -227,6 +234,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
+                            <label class="form-label" for="habitatFicha">Hábitat</label>
                                 <select class="form-select" id="habitatFicha" aria-label="Hábitat">
                                     <option hidden >Hábitat</option>
                                     <option value="Acuático">Acuático</option>
@@ -237,6 +245,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
+                            <label class="form-label" for="generoFicha">Género</label>
                                 <select class="form-select" id="generoFicha" aria-label="Género">
                                     <option hidden >Género</option>
                                     <option value="Masculino">Masculino</option>
@@ -245,6 +254,7 @@
                                 </select>
                             </div>
                             <div class="col-6">
+                            <label class="form-label" for="tamanoFicha">Tamaño</label>
                                 <select class="form-select" id="tamanoFicha" aria-label="Tamaño">
                                     <option hidden >Tamaño aproximado</option>
                                     <option value="Pequeño">Pequeño</option>
@@ -424,8 +434,6 @@
     <!-- Footer -->
 
     <script>
-  
-
     //Cuando el formulario con ID #fichaForm se envíe...
         $("#fichaForm").on("submit", function(e) {
             //Evito que se envíe por defecto
@@ -433,7 +441,8 @@
             //Creo un FormData con los datos del mismo formulario
             formData = new FormData();
             formData.append("nombreFicha", $('#nombreFicha').val());
-            formData.append("coordenadasFicha", $('#coordenadasFicha').val());
+            formData.append("latitudFicha", $('#latitudFicha').val());
+            formData.append("longitudFicha", $('#longitudFicha').val());
             formData.append("fechaFicha", $('#fechaFicha').val());
             formData.append("horaFicha", $('#horaFicha').val());
             formData.append("cieloFicha", $('#cieloFicha').val());
