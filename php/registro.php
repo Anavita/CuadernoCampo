@@ -1,20 +1,12 @@
 <?php
-	//Conexión con la base datos
 	require('conexiones.php');
 
-	//Obtengo los datos que entran por el formulario de registro
+	//Datos formulario de registro
 	$namePOST = $_POST["nombreReg"];
 	$lastnamePOST = $_POST["apellidosReg"];
 	$userPOST = $_POST["correoReg"]; 
 	$aliasPOST = $_POST["aliasReg"];
 	$passPOST = $_POST["passReg"];
-
-	//Filtro anti-XSS para proteger al usuario registrado de posibles ataques
-	$namePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $namePOST));
-	$lastnamePOST = htmlspecialchars(mysqli_real_escape_string($conexion, $lastnamePOST));
-	$userPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $userPOST));
-	$aliasPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $aliasPOST));
-	$passPOST = htmlspecialchars(mysqli_real_escape_string($conexion, $passPOST));
 
 	//Defino la cantidad máxima de caracteres, tal cual tengo en la tabla bd "registro"
 	$maxCaracteresName = "20";
@@ -23,7 +15,7 @@
 	$maxCaracteresAlias = "15";
 	$maxCaracteresPassword = "15";
 
-	//Si los input son de mayor tamaño, se "paraliza" el resto del código y muestra la respuesta correspondiente
+	//Si los input son de mayor tamaño, se paraliza el resto del código y muestra la respuesta correspondiente
 	if(strlen($namePOST) > $maxCaracteresName) {
 
 		die('El nombre de usuario no puede superar los '.$maxCaracteresName.' caracteres');
@@ -96,5 +88,5 @@
 		} else {
 			die('Error');
 		};
-	};//Fin comprobación if(empty($userPOST) || empty($passPOST))
+	};
 ?>

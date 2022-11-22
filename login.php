@@ -512,7 +512,7 @@
     <!-- Footer -->
 
     <script>
-    //Guardo el controlador del div ckion ID mensaje en una variable, tanto para
+    //Guardo el controlador del div ID mensaje en una variable, tanto para
     // el modal del login como el modal de registro
     var mensaje = $("#mensaje");
     var mensaje2 = $("#mensaje2");
@@ -524,8 +524,6 @@
     $("#loginUsuario").on("submit", function(e) {
         //Evito que se envíe por defecto
         e.preventDefault();
-        //Creo un FormData con los datos del mismo formulario
-        //var formData = new FormData(document.getElementById("loginUsuario"));
         formData = new FormData();
         formData.append("correoLogin", $('#correoLogin').val());
         formData.append("passLogin", $('#passLogin').val());
@@ -534,29 +532,20 @@
         $.ajax({
             //Defino la URL del archivo al cual se va a enviar los datos
             url: "php/acceder.php",
-            //Defino el tipo de método de envío
             type: "POST",
-            //Defino el tipo de datos que van a ser enviados y recibidos
             dataType: "HTML",
-            //Información que se va a enviar
             data: formData,
-            //Deshabilitar el caché
             cache: false,
-            //No especificar el contentType
             contentType: false,
-            //Para no permitir que los datos pasen como un objeto
             processData: false
         }).done(function(echo) {
             window.location.href = "pagina.php";
             //Una vez que la respuesta es recibida
-            //se comprueba si la misma no es vacía
+            //se comprueba si la misma no está vacía
             if (echo !== "") {
-                //Si hay respuesta (error), mostramos el mensaje
                 mensaje.html(echo);
                 mensaje.slideDown(500);
             } else {
-                //Si no hay respuesta, redirecionamos a donde sea necesario
-                //Si está vacío, recarga la página
                 window.location.replace("");
             }
         });

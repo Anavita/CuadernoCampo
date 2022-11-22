@@ -1,4 +1,10 @@
-el botón de cerrar sesión y la duración de la sesión
+<?php
+	//Se reanuda la sesión
+	session_start();
+
+	//Se comprueba si el usario está logueado
+	//Si no lo está, se le redirecciona al index
+	//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
 	if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
 		header('Location: index.php');
 	} else {
@@ -48,12 +54,11 @@ el botón de cerrar sesión y la duración de la sesión
     <!-- Vinculación Google Fonts · Montserrat Alternates -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-
     <!-- HEAD -->
     <!-- Barra navbar -->
     <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
@@ -119,48 +124,18 @@ el botón de cerrar sesión y la duración de la sesión
     <!-- Termina HEAD -->
 
     <!--BODY -->
-
     <h1>Mapa</h1>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <!-- Archivo PHP con la lógica para mostrar la tabla con las ubicaciones --> 
+            <?php include('phpmapa/leyenda.php'); ?>          
+        </div>      
+    </div>
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7_tybZ9bQ2pD_E3_Tw_epUXNiDxKHTIE&callback=initMap"></script>
- 
-<!-- Código correspondiente al archivo app.php del tutorial -->
-<?php
-  // Archivo de Conexión a la Base de Datos 
-  include('php/conexiones.php');
- 
-  // Listamos las direcciones con todos sus datos (lat, lng, dirección, etc.)
-  $result = mysqli_query($con, "SELECT * FROM google_maps_php_mysql");
- 
-  // Creamos una tabla para listar los datos 
-  echo "<div class='table-responsive'>";
- 
-  echo "<table class='table'>
-          <thead>
-            <tr>
-              <th scope='col'>Nombre</th>
-              <th scope='col'>Dirección</th>
-              <th scope='col'>Latitud</th>
-              <th scope='col'>Longitud</th>
-              <th scope='col'>País</th>
-            </tr>
-            </thead>
-            <tbody>";
- 
-  while ($row = mysqli_fetch_array($result)) {
-      echo "<tr>";
-      echo "<td scope='col'>" . $row['nombre'] . "</td>";
-      echo "<td scope='col'>" . preg_replace('/\\\\u([\da-fA-F]{4})/', '&#x\1;', $row['direccion']) . "</td>";
-      echo "<td scope='col'>" . $row['lat'] . "</td>";
-      echo "<td scope='col'>" . $row['lng'] . "</td>";
-      echo "<td scope='col'>" . $row['pais'] . "</td>";
-      echo "</tr>";
-  }
-  echo "</tbody></table>";
-  echo "</div>";
- 
-  mysqli_close($con);
-?>
+    <!-- Contenedor del Mapa de Google --> 
+    <div id="mapa"></div>
+
+
 
     <!-- FOOTER -->
     <footer class="text-center text-lg-start bg-secondary text-muted">
@@ -285,68 +260,72 @@ el botón de cerrar sesión y la duración de la sesión
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-	
-    <script>
-        function initMap() {
-          var map;
-          var bounds = new google.maps.LatLngBounds();
-          var mapOptions = {
-              mapTypeId: 'roadmap'
-          };
- 
-          map = new google.maps.Map(document.getElementById('mapa'), {
-              mapOptions
-          });
- 
-          map.setTilt(50);
- 
-          // Crear múltiples marcadores desde la Base de Datos 
-          var marcadores = [
-              <?php include('phpmapa/marcadores.php'); ?>
-          ];
- 
-          // Creamos la ventana de información para cada Marcador
-          var ventanaInfo = [
-              <?php include('phpmapa/info_marcadores.php'); ?>
-          ];
- 
-          // Creamos la ventana de información con los marcadores 
-          var mostrarMarcadores = new google.maps.InfoWindow(),
-              marcadores, i;
- 
-          // Colocamos los marcadores en el Mapa de Google 
-          for (i = 0; i < marcadores.length; i++) {
-              var position = new google.maps.LatLng(marcadores[i][1], marcadores[i][2]);
-              bounds.extend(position);
-              marker = new google.maps.Marker({
-                  position: position,
-                  map: map,
-                  title: marcadores[i][0]
-              });
- 
-              // Colocamos la ventana de información a cada Marcador del Mapa de Google 
-              google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                  return function() {
-                      mostrarMarcadores.setContent(ventanaInfo[i][0]);
-                      mostrarMarcadores.open(map, marker);
-                  }
-              })(marker, i));
- 
-              // Centramos el Mapa de Google para que todos los marcadores se puedan ver 
-              map.fitBounds(bounds);
-          }
- 
-          // Aplicamos el evento 'bounds_changed' que detecta cambios en la ventana del Mapa de Google, también le configramos un zoom de 14 
-          var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-              this.setZoom(14);
-              google.maps.event.removeListener(boundsListener);
-          });
- 
-      }
- 
-      // Lanzamos la función 'initMap' para que muestre el Mapa con Los Marcadores y toda la configuración realizada 
-      google.maps.event.addDomListener(window, 'load', initMap);
 
+     <!-- API de Google Maps-->
+     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7_tybZ9bQ2pD_E3_Tw_epUXNiDxKHTIE&callback=initMap"></script>
+	
+     <script type="text/javascript">
+        function initMap() {
+            var map;
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                mapTypeId: 'roadmap'
+            };
+
+            map = new google.maps.Map(document.getElementById('mapa'), {
+                mapOptions
+            });
+
+            map.setTilt(50);
+
+            //Se crean múltiples marcadores desde la Base de Datos 
+            var marcadores = [
+                <?php include('phpmapa/marcadores.php'); ?>
+            ];
+
+            //Ventana de información para cada marcador
+            var ventanaInfo = [
+                <?php include('phpmapa/info_marcadores.php'); ?>
+            ];
+
+            //Ventana de información marcadores 
+            var mostrarMarcadores = new google.maps.InfoWindow(),
+                marcadores, i;
+
+            //Se colocan los marcadores en el mapa de Google 
+            for (i = 0; i < marcadores.length; i++) {
+                var position = new google.maps.LatLng(marcadores[i][1], marcadores[i][2]);
+                bounds.extend(position);
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: marcadores[i][0]
+                });
+
+                //Ventana de información a cada marcador del mapa de Google 
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        mostrarMarcadores.setContent(ventanaInfo[i][0]);
+                        mostrarMarcadores.open(map, marker);
+                    }
+                })(marker, i));
+
+                //Centrar el mapa de Google 
+                map.fitBounds(bounds);
+            }
+
+            //Evento 'bounds_changed' detecta cambios en la ventana del mapa de Google
+            //Configuración zoom = 147
+            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+                this.setZoom(14);
+                google.maps.event.removeListener(boundsListener);
+            });
+
+        }
+
+        //Se lanza la función 'initMap' para que muestre el mapa con los marcadores,
+        // así como toda la configuración realizada
+        google.maps.event.addDomListener(window, 'load', initMap);
     </script>
 
 </body>

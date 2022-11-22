@@ -101,7 +101,7 @@
                         <li><a class="dropdown-item" href="ficha.php">Cubrir ficha</a></li>
                         <li><a class="dropdown-item" href="inventario.php">Inventario</a></li>
 						<li><a class="dropdown-item" href="#">Galería</a></li>
-						<li><a class="dropdown-item" href="#">Mapa</a></li>
+						<li><a class="dropdown-item" href="mapa.php">Mapa</a></li>
 						<li><a class="dropdown-item" href="#"><?php echo $salir; ?></p></a></li>
                     </ul>
                 </div>
