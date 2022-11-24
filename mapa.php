@@ -13,12 +13,6 @@
 		require('php/sesiones.php');
 	};
 ?>
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Bienvenido a tu Cuaderno de Campo</title>
-</head>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,8 +34,8 @@
     <!-- Vinculación fichero CSS media-queries -->
     <link rel="stylesheet" href="media-queries.css" />
 
-    <!-- Vinculación fichero CSS animaciones -->
-    <link rel="stylesheet" href="animate.css">
+    <!-- Vinculación fichero CSS animaciones 
+    <link rel="stylesheet" href="animate.css">-->
 
     <!-- Vinculación galería iconos SVG Bootstrap -->
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
@@ -55,6 +49,61 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400&display=swap" rel="stylesheet">
+
+    <!-- Script Google Maps -->
+    <script type="text/javascript">
+            // Initialize and add the map
+            function initMap() {
+
+                var bounds = new google.maps.LatLngBounds();
+                var myLatlng = new google.maps.LatLng(43.28233333, -8.29776389);
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 4,
+                    center: myLatlng,
+                });
+
+            // Crear múltiples marcadores desde la Base de Datos 
+            var marcadores = [
+                <?php include('phpmapa/marcadores.php'); ?>
+            ];
+    
+            // Creamos la ventana de información para cada Marcador
+            var ventanaInfo = [
+                <?php include('phpmapa/infomarcadores.php'); ?>
+            ];
+            console.log(ventanaInfo);
+
+                        // Creamos la ventana de información con los marcadores 
+                        var mostrarMarcadores = new google.maps.InfoWindow(),
+                marcadores, i;
+
+            for (i = 0; i < marcadores.length; i++) {
+                console.log(marcadores[i][0]);
+                console.log(marcadores[i][1]);
+                    const posicion = { lat: marcadores[i][0], lng:  marcadores[i][1]};
+                    const marker = new google.maps.Marker({
+                        position: posicion,
+                        map: map,
+                    });
+                    bounds.extend(posicion);
+
+                // Colocamos la ventana de información a cada Marcador del Mapa de Google 
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        mostrarMarcadores.setContent(ventanaInfo[i][0]);
+                        mostrarMarcadores.open(map, marker);
+                    }
+                })(marker, i));
+
+                // Centramos el Mapa de Google para que todos los marcadores se puedan ver 
+                map.fitBounds(bounds);
+            }
+
+
+            }
+
+            window.initMap = initMap;
+    </script>
 
 </head>
 
@@ -73,19 +122,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#proyecto">Proyecto</a>
+                        <a class="nav-link" href="index.php#proyecto">Proyecto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#nosotros">Conócenos</a>
+                        <a class="nav-link" href="index.php#nosotros">Conócenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#galeria">Galería</a>
+                        <a class="nav-link" href="index.php#galeria">Galería</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blog">Blog</a>
+                        <a class="nav-link" href="index.php#blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
+                        <a class="nav-link" href="index.php#contacto">Contacto</a>
                     </li>
                 </ul>
 				
@@ -125,16 +174,11 @@
 
     <!--BODY -->
     <h1>Mapa</h1>
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <!-- Archivo PHP con la lógica para mostrar la tabla con las ubicaciones --> 
-            <?php include('phpmapa/leyenda.php'); ?>          
-        </div>      
-    </div>
+        <!-- Contenedor del Mapa de Google --> 
+        <div id="map"></div>
 
-    <!-- Contenedor del Mapa de Google --> 
-    <div id="mapa"></div>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC24ijm-lHtDY82rYH82wodWnCDgtEp3gI&callback=initMap&v=weekly"></script>
 
 
     <!-- FOOTER -->
@@ -261,72 +305,9 @@
     </footer>
     <!-- Footer -->
 
-     <!-- API de Google Maps-->
-     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7_tybZ9bQ2pD_E3_Tw_epUXNiDxKHTIE&callback=initMap"></script>
-	
-     <script type="text/javascript">
-        function initMap() {
-            var map;
-            var bounds = new google.maps.LatLngBounds();
-            var mapOptions = {
-                mapTypeId: 'roadmap'
-            };
 
-            map = new google.maps.Map(document.getElementById('mapa'), {
-                mapOptions
-            });
 
-            map.setTilt(50);
-
-            //Se crean múltiples marcadores desde la Base de Datos 
-            var marcadores = [
-                <?php include('phpmapa/marcadores.php'); ?>
-            ];
-
-            //Ventana de información para cada marcador
-            var ventanaInfo = [
-                <?php include('phpmapa/info_marcadores.php'); ?>
-            ];
-
-            //Ventana de información marcadores 
-            var mostrarMarcadores = new google.maps.InfoWindow(),
-                marcadores, i;
-
-            //Se colocan los marcadores en el mapa de Google 
-            for (i = 0; i < marcadores.length; i++) {
-                var position = new google.maps.LatLng(marcadores[i][1], marcadores[i][2]);
-                bounds.extend(position);
-                marker = new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    title: marcadores[i][0]
-                });
-
-                //Ventana de información a cada marcador del mapa de Google 
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
-                        mostrarMarcadores.setContent(ventanaInfo[i][0]);
-                        mostrarMarcadores.open(map, marker);
-                    }
-                })(marker, i));
-
-                //Centrar el mapa de Google 
-                map.fitBounds(bounds);
-            }
-
-            //Evento 'bounds_changed' detecta cambios en la ventana del mapa de Google
-            //Configuración zoom = 147
-            var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-                this.setZoom(14);
-                google.maps.event.removeListener(boundsListener);
-            });
-
-        }
-
-        //Se lanza la función 'initMap' para que muestre el mapa con los marcadores,
-        // así como toda la configuración realizada
-        google.maps.event.addDomListener(window, 'load', initMap);
-    </script>
+     
 
 </body>
 </html>

@@ -11283,4 +11283,12 @@ textarea.form-control, input.form-control {
 
 select.form-select {
   margin-bottom: 15px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+
+
+/* Dimensiones mapa */
+#map {
+  height: 800px;
+  width: 100%;
+}

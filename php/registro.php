@@ -1,14 +1,14 @@
 <?php
 	require('conexiones.php');
 
-	//Datos formulario de registro
+	//Datos recogidos del formulario de registro
 	$namePOST = $_POST["nombreReg"];
 	$lastnamePOST = $_POST["apellidosReg"];
 	$userPOST = $_POST["correoReg"]; 
 	$aliasPOST = $_POST["aliasReg"];
 	$passPOST = $_POST["passReg"];
 
-	//Defino la cantidad máxima de caracteres, tal cual tengo en la tabla bd "registro"
+	//Defino la cantidad máxima de caracteres por, tal cual tengo en la tabla bd "registro"
 	$maxCaracteresName = "20";
 	$maxCaracteresLastname = "50";
 	$maxCaracteresUsername = "100";
@@ -75,8 +75,8 @@
 		$consulta = "INSERT INTO `registro` (nombreReg, apellidosReg, emailReg, aliasReg, passReg) 
 		VALUES ('$namePOST','$lastnamePOST','$userPOST','$aliasPOST', '$passwordConSalt')";
 		
-		//Si los datos se introducen correctamente, se muestran los datos
-		//Sino, emerge un mensaje de error
+		//Si los datos se introducen correctamente, se muestran
+		//En caso contrario, emerge un mensaje de error
 		if(mysqli_query($conexion, $consulta)) {
 			die('<script>$(".registro").val("");</script>
 	Registrado con éxito <br>

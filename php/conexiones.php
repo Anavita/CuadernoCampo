@@ -8,5 +8,5 @@
     if (!$conexion) {
         die("La conexión ha fallado: " . mysqli_connect_error());
     }
-    echo "Conexión satisfactoria.";
+    //echo "Conexión satisfactoria.";
 ?>

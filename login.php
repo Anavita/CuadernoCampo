@@ -551,7 +551,7 @@
         });
     });
 
-    //Cuando el formulario con ID acceso se envíe...
+    //Cuando el formulario con ID regUsuario se envíe...
     $("#regUsuario").on("submit", function(e) {
         e.preventDefault();
 
