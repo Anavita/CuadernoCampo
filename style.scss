@@ -145,13 +145,12 @@ navbar-brand {
     color: #114B36;
   }
 
-  /* Solución para el problema del "modal-backdrop fade show" 
+  /* Solución para el problema del "modal-backdrop" 
      (no desaparecía el cuadro de diálogo ni cerraba) */
 
   .modal-backdrop {
     z-index: -1;
   }
-
 
   /* Mensaje que comprueba si la conexión, login y registro de usuario han sido satisfactorios*/
 
@@ -170,7 +169,6 @@ navbar-brand {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 
 /****** BODY ******/
 
@@ -394,7 +392,12 @@ textarea.form-control, input.form-control {
 }
 
 select.form-select {
-
     margin-bottom: 15px;
+}
 
+/* Div Mapa */
+
+#map {
+    width: auto;
+    height: 600px;
 }

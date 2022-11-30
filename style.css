@@ -11059,7 +11059,7 @@ input#correoLogin, input#passLogin:hover {
   color: #114B36;
 }
 
-/* Solución para el problema del "modal-backdrop fade show" 
+/* Solución para el problema del "modal-backdrop" 
    (no desaparecía el cuadro de diálogo ni cerraba) */
 .modal-backdrop {
   z-index: -1;
@@ -11285,10 +11285,8 @@ select.form-select {
   margin-bottom: 15px;
 }
 
-
-
-/* Dimensiones mapa */
+/* Div Mapa */
 #map {
-  height: 800px;
-  width: 100%;
-}
+  width: auto;
+  height: 600px;
+}/*# sourceMappingURL=style.css.map */

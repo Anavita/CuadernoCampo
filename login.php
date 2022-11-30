@@ -26,9 +26,6 @@
     <!-- Vinculación fichero CSS media-queries -->
     <link rel="stylesheet" href="media-queries.css" />
 
-    <!-- Vinculación fichero CSS animaciones -->
-    <link rel="stylesheet" href="animate.css">
-
     <!-- Vinculación galería iconos SVG Bootstrap -->
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
 
@@ -40,21 +37,17 @@
     <!-- Vinculación Google Fonts · Montserrat Alternates -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
     <!-- HEAD -->
     <!-- Barra navbar -->
     <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
         <div class="container-fluid">
             <!--Logo pequeño navbar que reedirige a la portada de inicio -->
-            <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%"
-                    alt="Logo pequeño Cuaderno de Campo" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%" alt="Logo pequeño Cuaderno de Campo" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -79,8 +72,7 @@
                 <!-- Grupo botones menú login/registro -->
                 <!-- Con ms-auto consigo alienar el div que contiene el grupo de botones al final del navbar-->
                 <div class="btn-group ms-auto" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Login
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -90,20 +82,17 @@
                 </div>
 
                 <!-- Modal para el login -->
-                <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="ModalFormLabel"
-                    aria-hidden="true">
+                <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
-                                <button type="button" class="btn-close btn-close-primary" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-primary" data-bs-dismiss="modal" aria-label="Close"></button>
                                 <div class="myform">
                                     <h1 class="text-center">Acceso Usuario</h1>
                                     <form id="loginUsuario">
                                         <div class="mb-3 mt-4">
                                             <label for="correoLogin" class="form-label">Correo Electrónico</label>
-                                            <input type="email" class="form-control" id="correoLogin"
-                                                aria-describedby="emailHelp">
+                                            <input type="email" class="form-control" id="correoLogin" aria-describedby="emailHelp">
                                         </div>
                                         <div class="mb-3">
                                             <label for="passLogin" class="form-label">Contraseña</label>
@@ -121,13 +110,11 @@
                 </div>
 
                 <!-- Modal para el registro -->
-                <div class="modal fade modal-lg" id="ModalReg" tabindex="-1" aria-labelledby="ModalFormLabel"
-                    aria-hidden="true">
+                <div class="modal fade modal-lg" id="ModalReg" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body">
-                                <button type="button" class="btn-close btn-close-primary" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-primary" data-bs-dismiss="modal" aria-label="Close"></button>
                                 <div class="myform">
                                     <h1 class="text-center">Registro de usuario</h1>
                                     <form id="regUsuario">
@@ -191,13 +178,13 @@
     <div class="proyecto-container section-container" id="proyecto">
         <div class="container">
             <div class="row">
-                <div class="col proyecto section-description wow fadeIn">
+                <div class="col proyecto section-description">
                     <h2>Sobre el proyecto</h2>
-                    <div class="divider-1 wow fadeInUp"><span></span></div>
+                    <div class="divider-1"><span></span></div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 proyecto-box wow fadeInUp">
+                <div class="col-md-4 proyecto-box">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="proyecto-box-icon">
@@ -212,7 +199,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 proyecto-box wow fadeInDown">
+                <div class="col-md-4 proyecto-box">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="proyecto-box-icon">
@@ -227,7 +214,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 proyecto-box wow fadeInUp">
+                <div class="col-md-4 proyecto-box">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="proyecto-box-icon">
@@ -250,7 +237,7 @@
     <div class="nosotros-container section-container section-container-gray-bg" id="nosotros">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-12 nosotros-box wow fadeInLeft">
+                <div class="col-12 col-lg-12 nosotros-box">
                     <div class="about-us-box-text">
                         <h2>Sobre nosotros</h2>
                         <p class="medium-paragraph">
@@ -281,7 +268,7 @@
                     </div>
                 </div>
                 <!-- Queda pendiente arreglar este div -->
-                <!-- <div class="col-12 col-lg-5 nosotros-box wow fadeInUp">
+                <!-- <div class="col-12 col-lg-5 nosotros-box">
                     <div class="about-us-box-img">
                         <img src="" class="cuaderno" alt="Sobre nosotros" data-at2x="">
                     </div>
@@ -295,14 +282,14 @@
     <div class="blog-container section-container" id="blog">
         <div class="container">
             <div class="row">
-                <div class="col blog section-description wow fadeIn">
+                <div class="col blog section-description">
                     <h2>Blog</h2>
-                    <div class="divider-1 wow fadeInUp"><span></span></div>
+                    <div class="divider-1"><span></span></div>
                     <p>Últimas entradas añadidas</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 blog-box wow fadeInUp">
+                <div class="col-md-4 blog-box">
                     <div class="blog-box-image">
                         <img src="img/flores.jpg" alt="" data-at2x="img/flores.jpg">
                     </div>
@@ -312,7 +299,7 @@
                         labore et.
                     </p>
                 </div>
-                <div class="col-md-4 blog-box wow fadeInUp">
+                <div class="col-md-4 blog-box">
                     <div class="blog-box-image">
                         <img src="img/prismaticos.jpg" alt="" data-at2x="img/prismaticos.jpg">
                     </div>
@@ -322,7 +309,7 @@
                         labore et.
                     </p>
                 </div>
-                <div class="col-md-4 blog-box wow fadeInUp">
+                <div class="col-md-4 blog-box">
                     <div class="blog-box-image">
                         <img src="img/mariposa.jpg" alt="" data-at2x="img/mariposa.jpg">
                     </div>
@@ -334,7 +321,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col section-bottom-button wow fadeInUp">
+                <div class="col section-bottom-button">
                     <a class="btn btn-primary btn-link-3" href="#">Ver más</a>
                 </div>
             </div>
@@ -345,7 +332,7 @@
     <div class="contacto-container section-container" id="contacto">
         <div class="container">
             <div class="row">
-                <div class="col contacto section-description wow fadeIn">
+                <div class="col contacto section-description">
                     <h2>Contacto</h2>
                 </div>
             </div>
@@ -366,8 +353,7 @@
 
                         <div class="mb-3">
                             <label class="form-label" for="mensaje">Mensaje</label>
-                            <textarea class="form-control" id="mensaje" type="text" placeholder="Mensaje"
-                                style="height: 10rem;"></textarea>
+                            <textarea class="form-control" id="mensaje" type="text" placeholder="Mensaje" style="height: 10rem;"></textarea>
                         </div>
 
                         <div class="d-grid gap-2 col-2 mx-auto">
@@ -418,11 +404,8 @@
         <!-- Sección Links  -->
         <section class="">
             <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
                 <div class="row mt-3">
-                    <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
                             <i class="fas fa-gem me-3 text-secondary"></i>Cuaderno de Campo
                         </h6>
@@ -431,9 +414,7 @@
                             dolor sit amet, consectetur adipisicing elit.</p>
                         <img class="mx-auto d-block" src="./img/logo03.png" alt="Logo pequeño Cuaderno de Campo" />
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
@@ -452,9 +433,7 @@
                             <a href="#!" class="text-reset">Aviso legal</a>
                         </p>
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
@@ -479,9 +458,7 @@
                             <a href="#contacto" class="text-reset">Contacto</a>
                         </p>
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">Contacto</h6>
@@ -495,14 +472,10 @@
                         <p><i class="fas fa-phone me-3 text-secondary"></i> +34 881 01 20 60</p>
                         <p><i class="fas fa-print me-3 text-secondary"></i> +34 881 01 20 62</p>
                     </div>
-                    <!-- Grid column -->
                 </div>
-                <!-- Grid row -->
             </div>
         </section>
-        <!-- Section: Links  -->
 
-        <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
             © 2022 Copyright:
             <a class="text-reset fw-bold" href="https://cuadernodecampo.com/">Cuaderno de Campo</a>
@@ -512,70 +485,70 @@
     <!-- Footer -->
 
     <script>
-    //Guardo el controlador del div ID mensaje en una variable, tanto para
-    // el modal del login como el modal de registro
-    var mensaje = $("#mensaje");
-    var mensaje2 = $("#mensaje2");
-    //Posteriormente oculto el div
-    mensaje.hide();
-    mensaje2.hide();
+        //Guardo el controlador del div ID mensaje en una variable, tanto para
+        // el modal del login como el modal de registro
+        var mensaje = $("#mensaje");
+        var mensaje2 = $("#mensaje2");
+        //Posteriormente oculto el div
+        mensaje.hide();
+        mensaje2.hide();
 
-    //Cuando el formulario con ID loginUsuario se envíe...
-    $("#loginUsuario").on("submit", function(e) {
-        //Evito que se envíe por defecto
-        e.preventDefault();
-        formData = new FormData();
-        formData.append("correoLogin", $('#correoLogin').val());
-        formData.append("passLogin", $('#passLogin').val());
+        //Cuando el formulario con ID loginUsuario se envíe...
+        $("#loginUsuario").on("submit", function(e) {
+            //Evito que se envíe por defecto
+            e.preventDefault();
+            formData = new FormData();
+            formData.append("correoLogin", $('#correoLogin').val());
+            formData.append("passLogin", $('#passLogin').val());
 
-        //Llamo a la función AJAX de jQuery
-        $.ajax({
-            //Defino la URL del archivo al cual se va a enviar los datos
-            url: "php/acceder.php",
-            type: "POST",
-            dataType: "HTML",
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false
-        }).done(function(echo) {
-            window.location.href = "pagina.php";
-            //Una vez que la respuesta es recibida
-            //se comprueba si la misma no está vacía
-            if (echo !== "") {
-                mensaje.html(echo);
-                mensaje.slideDown(500);
-            } else {
-                window.location.replace("");
-            }
+            //Llamo a la función AJAX de jQuery
+            $.ajax({
+                //Defino la URL del archivo al cual se va a enviar los datos
+                url: "php/acceder.php",
+                type: "POST",
+                dataType: "HTML",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function(echo) {
+                window.location.href = "pagina.php";
+                //Una vez que la respuesta es recibida
+                //se comprueba si la misma no está vacía
+                if (echo !== "") {
+                    mensaje.html(echo);
+                    mensaje.slideDown(500);
+                } else {
+                    window.location.replace("");
+                }
+            });
         });
-    });
 
-    //Cuando el formulario con ID regUsuario se envíe...
-    $("#regUsuario").on("submit", function(e) {
-        e.preventDefault();
+        //Cuando el formulario con ID regUsuario se envíe...
+        $("#regUsuario").on("submit", function(e) {
+            e.preventDefault();
 
-        formData = new FormData();
-        formData.append("nombreReg", $('#nombreReg').val());
-        formData.append("apellidosReg", $('#apellidosReg').val());
-        formData.append("correoReg", $('#correoReg').val());
-        formData.append("aliasReg", $('#aliasReg').val());
-        formData.append("passReg", $('#passReg').val());
+            formData = new FormData();
+            formData.append("nombreReg", $('#nombreReg').val());
+            formData.append("apellidosReg", $('#apellidosReg').val());
+            formData.append("correoReg", $('#correoReg').val());
+            formData.append("aliasReg", $('#aliasReg').val());
+            formData.append("passReg", $('#passReg').val());
 
-        //Mismos pasos que el formulario de login
-        $.ajax({
-            url: "php/registro.php",
-            type: "POST",
-            dataType: "HTML",
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false
-        }).done(function(echo) {
-            mensaje2.html(echo);
-            mensaje2.slideDown(500);
+            //Mismos pasos que el formulario de login
+            $.ajax({
+                url: "php/registro.php",
+                type: "POST",
+                dataType: "HTML",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            }).done(function(echo) {
+                mensaje2.html(echo);
+                mensaje2.slideDown(500);
+            });
         });
-    });
     </script>
 
 </body>

@@ -1,17 +1,17 @@
 <?php
-	//Se reanuda la sesión
-	session_start();
+    //Se reanuda la sesión
+    session_start();
 
-	//Se comprueba si el usario está logueado
-	//Si no lo está, se le redirecciona al index
-	//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
-	if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
-		header('Location: index.php');
-	} else {
-		$estado = $_SESSION['usuario'];
-		$salir = '<a href="php/salir.php" target="_self">Salir</a>';
-		require('php/sesiones.php');
-	};
+    //Se comprueba si el usario está logueado
+    //Si no lo está, se le redirecciona al index
+    //Si lo está, se define el botón de cerrar sesión y la duración de la sesión
+    if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+        header('Location: index.php');
+    } else {
+        $estado = $_SESSION['usuario'];
+        $salir = '<a href="php/salir.php" target="_self">Salir</a>';
+        require('php/sesiones.php');
+    };
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +34,6 @@
     <!-- Vinculación fichero CSS media-queries -->
     <link rel="stylesheet" href="media-queries.css" />
 
-    <!-- Vinculación fichero CSS animaciones 
-    <link rel="stylesheet" href="animate.css">-->
-
     <!-- Vinculación galería iconos SVG Bootstrap -->
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
 
@@ -52,42 +49,45 @@
 
     <!-- Script Google Maps -->
     <script type="text/javascript">
-            // Initialize and add the map
-            function initMap() {
+        //Inicializar y añadir el mapa
+        function initMap() {
 
-                var bounds = new google.maps.LatLngBounds();
-                var myLatlng = new google.maps.LatLng(43.28233333, -8.29776389);
-                    const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 4,
-                    center: myLatlng,
-                });
+            var bounds = new google.maps.LatLngBounds();
+            var myLatlng = new google.maps.LatLng(43.28233333, -8.29776389);
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: myLatlng,
+            });
 
-            // Crear múltiples marcadores desde la Base de Datos 
+            //Se crean múltiples marcadores desde la BD
             var marcadores = [
                 <?php include('phpmapa/marcadores.php'); ?>
             ];
-    
-            // Creamos la ventana de información para cada Marcador
+
+            //Ventana de información para cada marcador
             var ventanaInfo = [
                 <?php include('phpmapa/infomarcadores.php'); ?>
             ];
             console.log(ventanaInfo);
 
-                        // Creamos la ventana de información con los marcadores 
-                        var mostrarMarcadores = new google.maps.InfoWindow(),
+            //Ventana de información con los marcadores 
+            var mostrarMarcadores = new google.maps.InfoWindow(),
                 marcadores, i;
 
             for (i = 0; i < marcadores.length; i++) {
                 console.log(marcadores[i][0]);
                 console.log(marcadores[i][1]);
-                    const posicion = { lat: marcadores[i][0], lng:  marcadores[i][1]};
-                    const marker = new google.maps.Marker({
-                        position: posicion,
-                        map: map,
-                    });
-                    bounds.extend(posicion);
+                const posicion = {
+                    lat: marcadores[i][0],
+                    lng: marcadores[i][1]
+                };
+                const marker = new google.maps.Marker({
+                    position: posicion,
+                    map: map,
+                });
+                bounds.extend(posicion);
 
-                // Colocamos la ventana de información a cada Marcador del Mapa de Google 
+                // Colocar la ventana de información de cada marcador del mapa
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
                         mostrarMarcadores.setContent(ventanaInfo[i][0]);
@@ -95,14 +95,11 @@
                     }
                 })(marker, i));
 
-                // Centramos el Mapa de Google para que todos los marcadores se puedan ver 
+                //Se centra el mapa para que todos los marcadores se puedan ver 
                 map.fitBounds(bounds);
             }
-
-
-            }
-
-            window.initMap = initMap;
+        }
+        window.initMap = initMap;
     </script>
 
 </head>
@@ -113,10 +110,8 @@
     <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
         <div class="container-fluid">
             <!--Logo pequeño navbar que reedirige a la portada de inicio -->
-            <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%"
-                    alt="Logo pequeño Cuaderno de Campo" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%" alt="Logo pequeño Cuaderno de Campo" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -137,20 +132,19 @@
                         <a class="nav-link" href="index.php#contacto">Contacto</a>
                     </li>
                 </ul>
-				
+
                 <!-- Menú usuario cuando está logueado -->
                 <!-- Con ms-auto consigo alienar el div que contiene el grupo de botones al final del navbar-->
                 <div class="btn-group ms-auto" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Bienvenid@ <?php echo $estado; ?>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item" href="ficha.php">Cubrir ficha</a></li>
                         <li><a class="dropdown-item" href="inventario.php">Inventario</a></li>
-						<li><a class="dropdown-item" href="#">Galería</a></li>
-						<li><a class="dropdown-item" href="mapa.php">Mapa</a></li>
-						<li><a class="dropdown-item" href="#"><?php echo $salir; ?></p></a></li>
+                        <li><a class="dropdown-item" href="galeria.php">Galería</a></li>
+                        <li><a class="dropdown-item" href="mapa.php">Mapa</a></li>
+                        <li><a class="dropdown-item" href="#"><?php echo $salir; ?></p></a></li>
                     </ul>
                 </div>
             </div>
@@ -174,10 +168,10 @@
 
     <!--BODY -->
     <h1>Mapa</h1>
-        <!-- Contenedor del Mapa de Google --> 
-        <div id="map"></div>
+    <!-- Contenedor del Mapa de Google -->
+    <div id="map"></div>
 
-
+    <!-- Script API de Google -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC24ijm-lHtDY82rYH82wodWnCDgtEp3gI&callback=initMap&v=weekly"></script>
 
 
@@ -218,11 +212,8 @@
         <!-- Sección Links  -->
         <section class="">
             <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
                 <div class="row mt-3">
-                    <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
                             <i class="fas fa-gem me-3 text-secondary"></i>Cuaderno de Campo
                         </h6>
@@ -231,9 +222,7 @@
                             dolor sit amet, consectetur adipisicing elit.</p>
                         <img class="mx-auto d-block" src="./img/logo03.png" alt="Logo pequeño Cuaderno de Campo" />
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
@@ -252,9 +241,7 @@
                             <a href="#!" class="text-reset">Aviso legal</a>
                         </p>
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
@@ -273,9 +260,7 @@
                             <a href="#!" class="text-reset">Contacto</a>
                         </p>
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">Contacto</h6>
@@ -289,12 +274,10 @@
                         <p><i class="fas fa-phone me-3 text-secondary"></i> +34 881 01 20 60</p>
                         <p><i class="fas fa-print me-3 text-secondary"></i> +34 881 01 20 62</p>
                     </div>
-                    <!-- Grid column -->
                 </div>
-                <!-- Grid row -->
             </div>
         </section>
-        <!-- Section: Links  -->
+        <!-- Termina sección links -->
 
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
@@ -305,9 +288,6 @@
     </footer>
     <!-- Footer -->
 
-
-
-     
-
 </body>
+
 </html>

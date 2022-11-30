@@ -1,23 +1,24 @@
 <?php
-	//Se reanuda la sesión
-	session_start();
+    //Se reanuda la sesión
+    session_start();
 
-	//Se comprueba si el usario está logueado
-	//Si no lo está, se le redirecciona al index
-	//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
-	if(!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
-		header('Location: index.php');
-	} else {
-		$estado = $_SESSION['usuario'];
-		$salir = '<a href="php/salir.php" target="_self">Salir</a>';
-		require('php/sesiones.php');
-	};
+    //Se comprueba si el usario está logueado
+    //Si no lo está, se le redirecciona al index
+    //Si lo está, se define el botón de cerrar sesión y la duración de la sesión
+    if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+        header('Location: index.php');
+    } else {
+        $estado = $_SESSION['usuario'];
+        $salir = '<a href="php/salir.php" target="_self">Salir</a>';
+        require('php/sesiones.php');
+    };
 ?>
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<title>Crear ficha Cuaderno de Campo</title>
+    <meta charset="utf-8">
+    <title>Crear ficha Cuaderno de Campo</title>
 </head>
 
 <!DOCTYPE html>
@@ -40,9 +41,6 @@
     <!-- Vinculación fichero CSS media-queries -->
     <link rel="stylesheet" href="media-queries.css" />
 
-    <!-- Vinculación fichero CSS animaciones -->
-    <link rel="stylesheet" href="animate.css">
-
     <!-- Vinculación galería iconos SVG Bootstrap -->
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
 
@@ -54,8 +52,7 @@
     <!-- Vinculación Google Fonts · Montserrat Alternates -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@200;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -64,10 +61,8 @@
     <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg">
         <div class="container-fluid">
             <!--Logo pequeño navbar que reedirige a la portada de inicio -->
-            <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%"
-                    alt="Logo pequeño Cuaderno de Campo" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.php"><img src="./img/logo02.png" width="75%" alt="Logo pequeño Cuaderno de Campo" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -88,27 +83,26 @@
                         <a class="nav-link" href="pagina.php#contacto">Contacto</a>
                     </li>
                 </ul>
-				
+
                 <!-- Menú usuario cuando está logueado -->
                 <!-- Con ms-auto consigo alienar el div que contiene el grupo de botones al final del navbar-->
                 <div class="btn-group ms-auto" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         Bienvenid@ <?php echo $estado; ?>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item" href="ficha.php">Cubrir ficha</a></li>
                         <li><a class="dropdown-item" href="inventario.php">Inventario</a></li>
-						<li><a class="dropdown-item" href="#">Galería</a></li>
-						<li><a class="dropdown-item" href="mapa.php">Mapa</a></li>
-						<li><a class="dropdown-item" href="#"><?php echo $salir; ?></p></a></li>
+                        <li><a class="dropdown-item" href="galeria.php">Galería</a></li>
+                        <li><a class="dropdown-item" href="mapa.php">Mapa</a></li>
+                        <li><a class="dropdown-item" href="#"><?php echo $salir; ?></p></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-     <!-- Portada efecto parallax -->
-     <section>
+    <!-- Portada efecto parallax -->
+    <section>
         <div id="portada" class="row">
             <div class="row h-100">
                 <!--Div contenedor logo-->
@@ -159,23 +153,25 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                            <label class="form-label" for="cieloFicha">Estado del cielo</label>
+                                <label class="form-label" for="cieloFicha">Estado del cielo</label>
                                 <select class="form-select" id="cieloFicha" aria-label="Estado del cielo">
-                                    <option hidden >Estado del cielo</option>
+                                    <option hidden>Estado del cielo</option>
                                     <option value="Despejado">Despejado</option>
                                     <option value="Sol y nubes">Sol y nubes</option>
+                                    <option value="Lluvia">Lluvia</option>
                                     <option value="Nublado">Nublado</option>
                                     <option value="Tormentoso">Tormentoso</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                            <label class="form-label" for="climaFicha">Tipo de clima</label>
+                                <label class="form-label" for="climaFicha">Tipo de clima</label>
                                 <select class="form-select" id="climaFicha" aria-label="Clima">
-                                    <option hidden >Clima</option>
+                                    <option hidden>Clima</option>
                                     <option value="Cálido">Cálido</option>
                                     <option value="Frío">Frío</option>
                                     <option value="Seco">Seco</option>
                                     <option value="Húmedo">Húmedo</option>
+                                    <option value="Lluvioso">Lluvioso</option>
                                     <option value="Viento">Viento</option>
                                     <option value="Tormenta">Tormenta</option>
                                 </select>
@@ -193,10 +189,10 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                            <label class="form-label" for="vertInvertFicha">Clasificación de la especie</label>
+                                <label class="form-label" for="vertInvertFicha">Clasificación de la especie</label>
                                 <select class="form-select" id="vertInvertFicha">
                                     <optgroup label="Vertebrado" class="vertebrado">
-                                        <option hidden >Clasificación</option>
+                                        <option hidden>Clasificación</option>
                                         <option value="Pez">Pez</option>
                                         <option value="Anfibio">Anfibio</option>
                                         <option value="Reptil">Reptil</option>
@@ -214,9 +210,9 @@
                                 </select>
                             </div>
                             <div class="col-6">
-                            <label class="form-label" for="alimentFicha">Tipo de alimentación</label>
+                                <label class="form-label" for="alimentFicha">Tipo de alimentación</label>
                                 <select class="form-select" id="alimentFicha" aria-label="Alimentación">
-                                    <option hidden > Tipo de alimentación</option>
+                                    <option hidden> Tipo de alimentación</option>
                                     <option value="Herbívoro">Herbívoro</option>
                                     <option value="Omnívoro">Omnnívoro</option>
                                     <option value="Carnívoro">Carnívoro</option>
@@ -225,18 +221,18 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                            <label class="form-label" for="desarrolloFicha">Desarrollo embrionario</label>
+                                <label class="form-label" for="desarrolloFicha">Desarrollo embrionario</label>
                                 <select class="form-select" id="desarrolloFicha" aria-label="Desarrollo embrionario">
-                                    <option hidden >Desarrollo embrionario</option>
+                                    <option hidden>Desarrollo embrionario</option>
                                     <option value="Vivíparo">Vivíparo</option>
                                     <option value="Ovíparo">Ovíparo</option>
                                     <option value="Ovovivíparo">Ovovivíparo</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                            <label class="form-label" for="habitatFicha">Hábitat</label>
+                                <label class="form-label" for="habitatFicha">Hábitat</label>
                                 <select class="form-select" id="habitatFicha" aria-label="Hábitat">
-                                    <option hidden >Hábitat</option>
+                                    <option hidden>Hábitat</option>
                                     <option value="Acuático">Acuático</option>
                                     <option value="Terrestre">Terrestre</option>
                                     <option value="Mixto">Mixto</option>
@@ -245,18 +241,18 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                            <label class="form-label" for="generoFicha">Género</label>
+                                <label class="form-label" for="generoFicha">Género</label>
                                 <select class="form-select" id="generoFicha" aria-label="Género">
-                                    <option hidden >Género</option>
+                                    <option hidden>Género</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Femenino">Femenino</option>
                                     <option value="NS">NS</option>
                                 </select>
                             </div>
                             <div class="col-6">
-                            <label class="form-label" for="tamanoFicha">Tamaño</label>
+                                <label class="form-label" for="tamanoFicha">Tamaño</label>
                                 <select class="form-select" id="tamanoFicha" aria-label="Tamaño">
-                                    <option hidden >Tamaño aproximado</option>
+                                    <option hidden>Tamaño aproximado</option>
                                     <option value="Pequeño">Pequeño</option>
                                     <option value="Mediano">Mediano</option>
                                     <option value="Grande">Grande</option>
@@ -346,11 +342,8 @@
         <!-- Sección Links  -->
         <section class="">
             <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
                 <div class="row mt-3">
-                    <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
                             <i class="fas fa-gem me-3 text-secondary"></i>Cuaderno de Campo
                         </h6>
@@ -359,9 +352,7 @@
                             dolor sit amet, consectetur adipisicing elit.</p>
                         <img class="mx-auto d-block" src="./img/logo03.png" alt="Logo pequeño Cuaderno de Campo" />
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
@@ -380,9 +371,7 @@
                             <a href="#!" class="text-reset">Aviso legal</a>
                         </p>
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">
@@ -401,9 +390,7 @@
                             <a href="#!" class="text-reset">Contacto</a>
                         </p>
                     </div>
-                    <!-- Grid column -->
 
-                    <!-- Grid column -->
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <!-- Links -->
                         <h6 class="text-uppercase fw-bold mb-4 text-center">Contacto</h6>
@@ -417,12 +404,10 @@
                         <p><i class="fas fa-phone me-3 text-secondary"></i> +34 881 01 20 60</p>
                         <p><i class="fas fa-print me-3 text-secondary"></i> +34 881 01 20 62</p>
                     </div>
-                    <!-- Grid column -->
                 </div>
-                <!-- Grid row -->
             </div>
         </section>
-        <!-- Section: Links  -->
+        <!-- Termina sección links -->
 
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
@@ -434,7 +419,7 @@
     <!-- Footer -->
 
     <script>
-    //Cuando el formulario con ID #fichaForm se envíe...
+        //Cuando el formulario con ID #fichaForm se envíe...
         $("#fichaForm").on("submit", function(e) {
             //Evito que se envíe por defecto
             e.preventDefault();
@@ -461,42 +446,26 @@
             formData.append("arch02", $('#arch02').val());
             formData.append("arch03", $('#arch03').val());
             formData.append("arch04", $('#arch04').val());
-            
-            console.log("1ª Prueba");
+
             //Llamo a la función AJAX de jQuery
             $.ajax({
                 //Defino la URL del archivo al cual se va a enviar los datos
                 url: "php/registroFicha.php",
-                //Defino el tipo de método de envío
                 type: "POST",
-                //Defino el tipo de datos que van a ser enviados y recibidos
                 dataType: "HTML",
-                //Información que se va a enviar
                 data: formData,
-                //Deshabilitar el caché
                 cache: false,
-                //No especificar el contentType
                 contentType: false,
-                //Para no permitir que los datos pasen como un objeto
                 processData: false
             }).done(function(echo) {
-                console.log("2ª Prueba");
                 window.location.href = "inventario.php";
-                //Una vez que la respuesta es recibida
-                //se comprueba si la misma no es vacía
-                if (echo !== "") {
-                   
-                    //Si hay respuesta (error), mostramos el mensaje
-                    console.log("3ª Prueba");
-                } else {
-                    console.log("4ª Prueba");
-                    //Si no hay respuesta, redirecionamos a donde sea necesario
-                    //Si está vacío, recarga la página
+                if (echo !== "") {} else {
                     window.location.replace("");
                 }
             });
         });
     </script>
-	
+
 </body>
+
 </html>

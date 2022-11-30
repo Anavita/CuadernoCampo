@@ -1,8 +1,9 @@
  <?php
 
   //Se agrega el nombre común y científico de la especie a la ventana de información de cada marcador
+  //además de la latitud y longitud 
 
-  $result = mysqli_query($conexion, "SELECT nomEspFicha, nomCieFicha, latitudFicha, longitudFicha, arch01 FROM ficha");
+  $result = mysqli_query($conexion, "SELECT nomEspFicha, nomCieFicha, latitudFicha, longitudFicha FROM ficha");
 
   if($result->num_rows > 0){
     
