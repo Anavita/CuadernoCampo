@@ -13,7 +13,6 @@
         require('php/sesiones.php');
     };
 ?>
-<!doctype html>
 <html>
 
 <head>
@@ -34,6 +33,50 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="tablainventario/bootstable.js"></script>
+
+    <script>
+    $( document ).ready(function() {
+    $('#edicionTabla').SetEditable({
+        columnsEd: "0,1,2,3,4",
+        onEdit: function(columnsEd) {
+            console.log(columnsEd[0].childNodes[1].innerHTML);
+            console.log(columnsEd[0].childNodes[3].innerHTML);
+            console.log(columnsEd[0].childNodes[5].innerHTML);
+            console.log(columnsEd[0].childNodes[7].innerHTML);
+          var empId = columnsEd[0].childNodes[1].innerHTML;
+          var empName = columnsEd[0].childNodes[3].innerHTML;
+          var gender = columnsEd[0].childNodes[5].innerHTML;
+          var age = columnsEd[0].childNodes[7].innerHTML;
+          $.ajax({
+              type: 'POST',			
+              url : "tablainventario/acciontabla.php",	
+              dataType: "json",					
+              data: {id:empId, name:empName, gender:gender, age:age, action:'edit'},			
+              success: function (response) {
+                console.log("biennnnnnnnnnnnnnnnn");
+                  if(response.status) {
+                  }						
+              }
+          });
+        },
+        onBeforeDelete: function(columnsEd) {
+        var empId = columnsEd[0].childNodes[1].innerHTML;
+        $.ajax({
+              type: 'POST',			
+              url : "acciontabla.php",
+              dataType: "json",					
+              data: {id:empId, action:'delete'},			
+              success: function (response) {
+                  if(response.status) {
+                  }			
+              }
+          });
+        },
+      });
+  });
+  </script>
 
     <!-- Vinculación fichero CSS -->
     <link rel="stylesheet" href="style.css" />
@@ -119,8 +162,100 @@
     <!-- Termina HEAD -->
 
     <!--BODY -->
-
     <h1>Inventario</h1>
+    <?php
+        include_once("php/conexiones.php");
+        $sqlQuery = "SELECT idFicha, nombreFicha, latitudFicha, longitudFicha FROM ficha";
+        $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:". mysqli_error($conexion));
+        ?>
+        <table id="edicionTabla" class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre Ficha</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>													
+                </tr>
+            </thead>
+            <tbody>
+                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
+                <tr id="<?php echo $developer ['idFicha']; ?>">
+                <td><?php echo $developer ['idFicha']; ?></td>
+                <td><?php echo $developer ['nombreFicha']; ?></td>
+                <td><?php echo $developer ['latitudFicha']; ?></td>
+                <td><?php echo $developer ['longitudFicha']; ?></td>  				   				   				  
+                </tr>
+                <?php } ?>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Estado del cielo</th>
+                    <th>Clima</th>													
+                </tr>
+            </thead>
+            <tbody>
+                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
+                <tr id="<?php echo $developer ['idFicha']; ?>">
+                <td><?php echo $developer ['fechaFicha']; ?></td>
+                <td><?php echo $developer ['horaFicha']; ?></td>
+                <td><?php echo $developer ['cieloFicha']; ?></td>
+                <td><?php echo $developer ['climaFicha']; ?></td>  				   				   				  
+                </tr>
+                <?php } ?>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Nombre común de la especie</th>
+                    <th>Nombre científico de la especie</th>
+                    <th>Clasificación de la especie</th>
+                    <th>Tipo de alimentación</th>													
+                </tr>
+            </thead>
+            <tbody>
+                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
+                <tr id="<?php echo $developer ['idFicha']; ?>">
+                <td><?php echo $developer ['nomEspFicha']; ?></td>
+                <td><?php echo $developer ['nomCieFicha']; ?></td>
+                <td><?php echo $developer ['vertInvertFicha']; ?></td>
+                <td><?php echo $developer ['alimentFicha']; ?></td>  				   				   				  
+                </tr>
+                <?php } ?>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Desarrollo embrionario</th>
+                    <th>Hábitat</th>
+                    <th>Género</th>
+                    <th>Tamaño</th>													
+                </tr>
+            </thead>
+            <tbody>
+                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
+                <tr id="<?php echo $developer ['idFicha']; ?>">
+                <td><?php echo $developer ['desarrolloFicha']; ?></td>
+                <td><?php echo $developer ['habitatFicha']; ?></td>
+                <td><?php echo $developer ['generoFicha']; ?></td>
+                <td><?php echo $developer ['tamanoFicha']; ?></td>  				   				   				  
+                </tr>
+                <?php } ?>
+            </tbody>
+            <thead>
+                <tr>
+                    <th colspan="2">Descripción</th>
+                    <th colspan="2">Comportamiento</th>											
+                </tr>
+            </thead>
+            <tbody>
+                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
+                <tr id="<?php echo $developer ['idFicha']; ?>">
+                <td colspan="2"><?php echo $developer ['descripFicha']; ?></td>
+                <td colspan="2"><?php echo $developer ['comportFicha']; ?></td>			   				   				  
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
 
 
     <!-- FOOTER -->
