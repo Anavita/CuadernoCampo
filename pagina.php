@@ -14,17 +14,8 @@
     };
 ?>
 
-<!doctype html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Bienvenido a tu Cuaderno de Campo</title>
-</head>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -39,6 +39,7 @@
 		session_start();
 		$_SESSION['usuario'] = $datos['emailReg'];
 		$_SESSION['estado'] = 'Autenticado';
+		$_SESSION['idUsuarioReg'] = $datos['idUsuarioReg'];
 
 	//Si los datos no son correctos, o están vacíos, muestra un error
 	} else if ( $userBD != $userPOSTMinusculas || 

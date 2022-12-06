@@ -15,20 +15,11 @@
 ?>
 <!doctype html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Crear ficha Cuaderno de Campo</title>
-</head>
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuaderno de campo</title>
+    <title>Cuaderno de campo · Ficha</title>
 
     <!-- Vinculación AJAX -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -446,6 +437,7 @@
             formData.append("arch02", $('#arch02').val());
             formData.append("arch03", $('#arch03').val());
             formData.append("arch04", $('#arch04').val());
+            formData.append("idUsuarioReg", <?php echo $_SESSION['idUsuarioReg']; ?>);
 
             //Llamo a la función AJAX de jQuery
             $.ajax({
@@ -458,8 +450,10 @@
                 contentType: false,
                 processData: false
             }).done(function(echo) {
+                console.log(echo);
                 window.location.href = "inventario.php";
-                if (echo !== "") {} else {
+                if (echo !== "") {
+                } else {
                     window.location.replace("");
                 }
             });

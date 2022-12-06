@@ -13,21 +13,14 @@
         require('php/sesiones.php');
     };
 ?>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Bienvenido a tu Cuaderno de Campo</title>
-</head>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuaderno de campo</title>
+    <title>Cuaderno de campo · Inventario</title>
 
     <!-- Vinculación AJAX -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -40,34 +33,51 @@
     $( document ).ready(function() {
     $('#edicionTabla').SetEditable({
         columnsEd: "0,1,2,3,4",
+        columnsEd2: "0,1,2,3,4",
         onEdit: function(columnsEd) {
             console.log(columnsEd[0].childNodes[1].innerHTML);
             console.log(columnsEd[0].childNodes[3].innerHTML);
             console.log(columnsEd[0].childNodes[5].innerHTML);
             console.log(columnsEd[0].childNodes[7].innerHTML);
-          var empId = columnsEd[0].childNodes[1].innerHTML;
-          var empName = columnsEd[0].childNodes[3].innerHTML;
-          var gender = columnsEd[0].childNodes[5].innerHTML;
-          var age = columnsEd[0].childNodes[7].innerHTML;
+            console.log(columnsEd2[2].childNodes[9].innerHTML);
+
+
+          var idF = columnsEd[0].childNodes[1].innerHTML;
+          var nombreF = columnsEd[0].childNodes[3].innerHTML;
+          var latitud = columnsEd[0].childNodes[5].innerHTML;
+          var longitud = columnsEd[0].childNodes[7].innerHTML;
+          var fecha = columnsEd[0].childNodes[9].innerHTML;
+          var hora = columnsEd[0].childNodes[11].innerHTML;
+          var cielo = columnsEd[0].childNodes[13].innerHTML;
+          var clima = columnsEd[0].childNodes[15].innerHTML;
+          var nomEsp = columnsEd[0].childNodes[17].innerHTML;
+          var nomCie = columnsEd[0].childNodes[19].innerHTML;
+          var vertInvert = columnsEd[0].childNodes[21].innerHTML;
+          var aliment = columnsEd[0].childNodes[23].innerHTML;
+          var desarrollo = columnsEd[0].childNodes[25].innerHTML;
+          var habitat = columnsEd[0].childNodes[27].innerHTML;
+          var genero = columnsEd[0].childNodes[29].innerHTML;
+          var tamano = columnsEd[0].childNodes[31].innerHTML;
+          var descrip = columnsEd[0].childNodes[33].innerHTML;
+          var comport = columnsEd[0].childNodes[35].innerHTML;
           $.ajax({
               type: 'POST',			
               url : "tablainventario/acciontabla.php",	
               dataType: "json",					
-              data: {id:empId, name:empName, gender:gender, age:age, action:'edit'},			
+              data: {idF:idF, nomF:nomF, latitud:latitud, longitud:longitud, fecha:fecha, hora:hora, cielo:cielo, clima:clima, nomEsp:nomEsp, nomCie:nomCie, vertInvert:vertInvert, aliment:aliment, desarrollo:desarrollo, habitat:habitat, genero:genero, tamano:tamano, descrip:descrip, comport:comport, action:'edit'},			
               success: function (response) {
-                console.log("biennnnnnnnnnnnnnnnn");
                   if(response.status) {
                   }						
               }
           });
         },
         onBeforeDelete: function(columnsEd) {
-        var empId = columnsEd[0].childNodes[1].innerHTML;
+        var idF = columnsEd[0].childNodes[1].innerHTML;
         $.ajax({
               type: 'POST',			
               url : "acciontabla.php",
               dataType: "json",					
-              data: {id:empId, action:'delete'},			
+              data: {idF:idF, action:'delete'},			
               success: function (response) {
                   if(response.status) {
                   }			
@@ -84,7 +94,8 @@
     <!-- Vinculación fichero CSS media-queries -->
     <link rel="stylesheet" href="media-queries.css" />
 
-    <!-- Vinculación galería iconos SVG Bootstrap -->
+    <!-- Vinculación galería iconos SVG Boot
+    trap -->
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css" />
 
     <!-- Vinculación Google Fonts · Tipografía: Ms Madis -->
@@ -165,9 +176,12 @@
     <h1>Inventario</h1>
     <?php
         include_once("php/conexiones.php");
-        $sqlQuery = "SELECT idFicha, nombreFicha, latitudFicha, longitudFicha FROM ficha";
+        $sqlQuery = "SELECT idFicha, nombreFicha, latitudFicha, longitudFicha, fechaFicha, horaFicha, cieloFicha, climaFicha, nomEspFicha, nomCieFicha, vertInvertFicha, alimentFicha, desarrolloFicha, habitatFicha, generoFicha, tamanoFicha, descripFicha, comportFicha FROM ficha WHERE idRegistro =" .$_SESSION['idUsuarioReg'];
+        
         $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:". mysqli_error($conexion));
-        ?>
+        
+        while( $developer = mysqli_fetch_assoc($resultSet) ) {?>
+    
         <table id="edicionTabla" class="table table-bordered table-sm">
             <thead>
                 <tr>
@@ -178,14 +192,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
                 <tr id="<?php echo $developer ['idFicha']; ?>">
                 <td><?php echo $developer ['idFicha']; ?></td>
                 <td><?php echo $developer ['nombreFicha']; ?></td>
                 <td><?php echo $developer ['latitudFicha']; ?></td>
                 <td><?php echo $developer ['longitudFicha']; ?></td>  				   				   				  
                 </tr>
-                <?php } ?>
             </tbody>
             <thead>
                 <tr>
@@ -195,15 +207,13 @@
                     <th>Clima</th>													
                 </tr>
             </thead>
-            <tbody>
-                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
+            <tbody>       
                 <tr id="<?php echo $developer ['idFicha']; ?>">
                 <td><?php echo $developer ['fechaFicha']; ?></td>
                 <td><?php echo $developer ['horaFicha']; ?></td>
                 <td><?php echo $developer ['cieloFicha']; ?></td>
                 <td><?php echo $developer ['climaFicha']; ?></td>  				   				   				  
                 </tr>
-                <?php } ?>
             </tbody>
             <thead>
                 <tr>
@@ -214,14 +224,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
                 <tr id="<?php echo $developer ['idFicha']; ?>">
                 <td><?php echo $developer ['nomEspFicha']; ?></td>
                 <td><?php echo $developer ['nomCieFicha']; ?></td>
                 <td><?php echo $developer ['vertInvertFicha']; ?></td>
                 <td><?php echo $developer ['alimentFicha']; ?></td>  				   				   				  
                 </tr>
-                <?php } ?>
             </tbody>
             <thead>
                 <tr>
@@ -232,14 +240,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
                 <tr id="<?php echo $developer ['idFicha']; ?>">
                 <td><?php echo $developer ['desarrolloFicha']; ?></td>
                 <td><?php echo $developer ['habitatFicha']; ?></td>
                 <td><?php echo $developer ['generoFicha']; ?></td>
                 <td><?php echo $developer ['tamanoFicha']; ?></td>  				   				   				  
                 </tr>
-                <?php } ?>
             </tbody>
             <thead>
                 <tr>
@@ -248,15 +254,15 @@
                 </tr>
             </thead>
             <tbody>
-                <?php while( $developer = mysqli_fetch_assoc($resultSet) ) { ?>
                 <tr id="<?php echo $developer ['idFicha']; ?>">
                 <td colspan="2"><?php echo $developer ['descripFicha']; ?></td>
                 <td colspan="2"><?php echo $developer ['comportFicha']; ?></td>			   				   				  
                 </tr>
-                <?php } ?>
             </tbody>
         </table>
-
+        <?php } ?>
+        <br>
+        <br>
 
     <!-- FOOTER -->
     <footer class="text-center text-lg-start bg-secondary text-muted">

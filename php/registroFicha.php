@@ -25,11 +25,13 @@
     $arch02POST = $_POST["arch02"];
     $arch03POST = $_POST["arch03"];
     $arch04POST = $_POST["arch04"];
+	$idUsuarioRegPOST = $_POST["idUsuarioReg"];
+	
 
 	//Consulta para introducir los datos que entran por el formulario de registro de la ficha 
 	//para posteriormente ser insertado en el campo correspondiente de la tabla "ficha"
-	$consulta = "INSERT INTO `ficha` (nombreFicha, latitudFicha, longitudFicha, fechaFicha, horaFicha, cieloFicha, climaFicha, nomEspFicha, nomCieFicha, vertInvertFicha, alimentFicha, desarrolloFicha, habitatFicha, generoFicha, tamanoFicha, descripFicha, comportFicha, arch01, arch02, arch03, arch04) 
-	VALUES ('$nomPOST','$latitudPOST','$longitudPOST','$fechaPOST','$horaPOST', '$cieloPOST', '$climaPOST', '$nomEspPOST', '$nomCiePOST', '$vertInvertPOST', '$alimentPOST', '$desarrolloPOST', '$habitatPOST', '$generoPOST', '$tamanoPOST', '$descripPOST', '$comportPOST', '$arch01POST', '$arch02POST', '$arch03POST', '$arch04POST')";
+	$consulta = "INSERT INTO `ficha` (nombreFicha, latitudFicha, longitudFicha, fechaFicha, horaFicha, cieloFicha, climaFicha, nomEspFicha, nomCieFicha, vertInvertFicha, alimentFicha, desarrolloFicha, habitatFicha, generoFicha, tamanoFicha, descripFicha, comportFicha, arch01, arch02, arch03, arch04, idRegistro) 
+	VALUES ('$nomPOST','$latitudPOST','$longitudPOST','$fechaPOST','$horaPOST', '$cieloPOST', '$climaPOST', '$nomEspPOST', '$nomCiePOST', '$vertInvertPOST', '$alimentPOST', '$desarrolloPOST', '$habitatPOST', '$generoPOST', '$tamanoPOST', '$descripPOST', '$comportPOST', '$arch01POST', '$arch02POST', '$arch03POST', '$arch04POST', '$idUsuarioRegPOST')";
 
 		//Si los datos se introducen correctamente, se muestran los datos
 		//Sino, emerge un mensaje de error
@@ -37,6 +39,7 @@
 			die('<script>$(".registro").val("");</script>
 	Ficha registrada con éxito');
 		} else {
+			die(mysqli_error($conexion));
 			die('Error');
 		};
 ?>

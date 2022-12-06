@@ -92,7 +92,7 @@ function IterarCamposEdit($cols, action) {
   }
 }
 function ModoEdicion($row) {
-  if ($row.attr('id')=='editing') {
+  if ($row.attr('idF')=='editing') {
       return true;
   } else {
       return false;
@@ -105,7 +105,7 @@ function SetButtonsNormal(but) {
   $(but).parent().find('#bEdit').show();
   $(but).parent().find('#bElim').show();
   var $row = $(but).parents('tr');  //accede a la fila
-  $row.attr('id', '');  //quita marca
+  $row.attr('idF', '');  //quita marca
 }
 function SetButtonsEdit(but) {
   $(but).parent().find('#bAcep').show();
@@ -113,7 +113,7 @@ function SetButtonsEdit(but) {
   $(but).parent().find('#bEdit').hide();
   $(but).parent().find('#bElim').hide();
   var $row = $(but).parents('tr');  //accede a la fila
-  $row.attr('id', 'editing');  //indica que está en edición
+  $row.attr('idF', 'editing');  //indica que está en edición
 }
 //Events functions
 function butRowAcep(but) {
@@ -169,14 +169,14 @@ function butRowDelete(but) {  //Elimina la fila actual
   params.onDelete();
 }
 //Functions that can be called directly
-function rowAddNew(tabId, initValues=[]) {  
+function rowAddNew(edicionTabla, initValues=[]) {  
   /* Add a new row to a editable table. 
    Parameters: 
     tabId       -> Id for the editable table.
     initValues  -> Optional. Array containing the initial value for the 
                    new row.
   */
-  var $tab_en_edic = $("#"+tabId);  //Table to edit
+  var $tab_en_edic = $("#"+edicionTabla);  //Table to edit
   var $rows = $tab_en_edic.find('tbody tr');
   //if ($rows.length==0) {
       //No hay filas de datos. Hay que crearlas completas
@@ -215,16 +215,16 @@ function rowAddNew(tabId, initValues=[]) {
   }*/
   params.onAdd();
 }
-function rowAddNewAndEdit(tabId, initValues=[]) {
+function rowAddNewAndEdit(edicionTabla, initValues=[]) {
 /* Add a new row an set edition mode */  
-  rowAddNew(tabId, initValues);
-  var $lastRow = $('#'+tabId + ' tr:last');
+  rowAddNew(edicionTabla, initValues);
+  var $lastRow = $('#'+edicionTabla + ' tr:last');
   butRowEdit($lastRow.find('#bEdit'));  //Pass a button reference
 }
-function TableToCSV(tabId, separator) {  //Convert table to CSV
+function TableToCSV(edicionTabla, separator) {  //Convert table to CSV
   var datFil = '';
   var tmp = '';
-  var $tab_en_edic = $("#" + tabId);  //Table source
+  var $tab_en_edic = $("#" + edicionTabla);  //Table source
   $tab_en_edic.find('tbody tr').each(function() {
       //Termina la edición si es que existe
       if (ModoEdicion($(this))) {
@@ -246,10 +246,10 @@ function TableToCSV(tabId, separator) {  //Convert table to CSV
   });
   return tmp;
 }
-function TableToJson(tabId) {   //Convert table to JSON
+function TableToJson(edicionTabla) {   //Convert table to JSON
   var json = '{';
   var otArr = [];
-  var tbl2 = $('#'+tabId+' tr').each(function(i) {        
+  var tbl2 = $('#'+edicionTabla+' tr').each(function(i) {        
      var x = $(this).children();
      var itArr = [];
      x.each(function() {
