@@ -448,7 +448,7 @@
                 data: formData,
                 cache: false,
                 contentType: false,
-                processData: false
+                processData: false,
             }).done(function(echo) {
                 console.log(echo);
                 window.location.href = "inventario.php";

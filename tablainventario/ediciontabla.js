@@ -28,7 +28,6 @@ $( document ).ready(function() {
               dataType: "json",					
               data: {id:empId, action:'delete'},
               error: function (request, error) {
-                console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
             },              			
               success: function (response) {
                   if(response.status) {

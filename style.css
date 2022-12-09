@@ -11240,6 +11240,13 @@ p .medium-paragraph {
   margin-bottom: 10px;
 }
 
+/* Slider fotografías de todos los usuarios */
+#carousel {
+  padding-top: 65px;
+  padding-bottom: 20px;
+  width: 75%;
+}
+
 /* Formulario de Contacto */
 #contacto {
   background-image: url(./img/lince.jpg);
@@ -11289,4 +11296,36 @@ select.form-select {
 #map {
   width: auto;
   height: 600px;
+}
+
+/* Fotografía para cada marcador (arch01 de la BD) */
+#imgMap {
+  width: 50%;
+  height: 50%;
+  border-radius: 20px;
+}
+
+/* Div contenedor del marcador */
+.info_content {
+  width: 100%;
+}
+
+/* Galería Fotográfica del usuario */
+#galeria {
+  padding-left: 15%;
+}
+
+.lightbox img {
+  width: 20%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding: 5px;
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.lightbox img:hover {
+  transition: 0.5s ease-out;
+  transform: scale(1.75);
 }/*# sourceMappingURL=style.css.map */

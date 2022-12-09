@@ -21,10 +21,10 @@
     $tamanoPOST = $_POST["tamanoFicha"];
     $descripPOST = $_POST["descripFicha"];
     $comportPOST = $_POST["comportFicha"];
-    $arch01POST = $_POST["arch01"];
-    $arch02POST = $_POST["arch02"];
-    $arch03POST = $_POST["arch03"];
-    $arch04POST = $_POST["arch04"];
+    $arch01POST = $_FILES["arch01"];
+    $arch02POST = $_FILES["arch02"];
+    $arch03POST = $_FILES["arch03"];
+    $arch04POST = $_FILES["arch04"];
 	$idUsuarioRegPOST = $_POST["idUsuarioReg"];
 	
 

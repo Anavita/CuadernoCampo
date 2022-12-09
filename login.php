@@ -328,6 +328,40 @@
         </div>
     </div>
 
+    <!-- Sección Galería Fotográfica -->
+    <?php
+
+        include_once("php/conexiones.php");
+
+        $sqlQuery = "SELECT arch01 FROM ficha";
+        
+        $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:". mysqli_error($conexion));
+        
+        while( $developer = mysqli_fetch_assoc($resultSet) ) {?>
+
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img class="d-block w-100" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" /> 
+                </div>
+                <div class="carousel-item">
+                <img class="d-block w-100" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" /> 
+                </div>
+                <div class="carousel-item">
+                <img class="d-block w-100" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" /> 
+                </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <?php } ?>
+
     <!--  Sección "Contacto" -->
     <div class="contacto-container section-container" id="contacto">
         <div class="container">

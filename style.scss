@@ -348,6 +348,18 @@ p .medium-paragraph {
 }
 
 
+/* Slider fotografías de todos los usuarios */
+
+#carousel {
+    padding-top: 65px;
+    padding-bottom: 20px;
+    width: 75%;
+}
+
+#carousel img {
+   
+}
+
 /* Formulario de Contacto */
 
 #contacto {
@@ -401,3 +413,47 @@ select.form-select {
     width: auto;
     height: 600px;
 }
+
+/* Fotografía para cada marcador (arch01 de la BD) */
+
+#imgMap {
+
+    width: 50%;
+    height: 50%;
+    border-radius: 20px;
+}
+
+/* Div contenedor del marcador */
+
+.info_content {
+
+    width: 100%;
+
+}
+
+
+/* Galería Fotográfica del usuario */
+
+#galeria {
+    padding-left: 15%;
+}
+
+.lightbox img {
+    width: 20%;
+    height: auto;
+    object-fit: cover;
+    padding: 5px;
+    margin-top: 8px;
+    vertical-align: middle;
+  }
+  
+  .lightbox img:hover {
+    transition: 0.5s ease-out;
+    -o-transform: scale(1.75);
+    -moz-transform: scale(1.75);
+    -webkit-transform: scale(1.75);
+    -ms-transform: scale(1.75);
+    transform: scale(1.75);
+  }
+
+  
