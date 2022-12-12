@@ -11175,7 +11175,7 @@ p .medium-paragraph {
   border-radius: 50px;
 }
 
-/***** Blog *****/
+/* Blog */
 #blog {
   padding-top: 65px;
   padding-bottom: 20px;
@@ -11241,10 +11241,13 @@ p .medium-paragraph {
 }
 
 /* Slider fotografías de todos los usuarios */
-#carousel {
+#galeria {
   padding-top: 65px;
   padding-bottom: 20px;
-  width: 75%;
+}
+
+#galeria img {
+  width: auto;
 }
 
 /* Formulario de Contacto */
@@ -11311,12 +11314,12 @@ select.form-select {
 }
 
 /* Galería Fotográfica del usuario */
-#galeria {
+#galeriaUsuario {
   padding-left: 15%;
 }
 
 .lightbox img {
-  width: 20%;
+  width: 450px;
   height: auto;
   -o-object-fit: cover;
      object-fit: cover;

@@ -65,10 +65,10 @@
                         <a class="nav-link" href="pagina.php#nosotros">Conócenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pagina.php#galeria">Galería</a>
+                        <a class="nav-link" href="pagina.php#blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pagina.php#blog">Blog</a>
+                        <a class="nav-link" href="pagina.php#galeria">Galería</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="pagina.php#contacto">Contacto</a>
@@ -262,27 +262,27 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="arch01">
+                                    <input type="file" class="form-control" name="arch01" id="arch01">
                                     <label class="input-group-text" for="arch01">Subir</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="arch02">
-                                    <label class="input-group-text" for="arch02">Subir</label>
+                                    <input type="file" class="form-control" name="arch02" id="arch02">
+                                    <label class="input-group-text"for="arch02">Subir</label>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="arch03">
+                                    <input type="file" class="form-control" name="arch03" id="arch03">
                                     <label class="input-group-text" for="arch03">Subir</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="file" class="form-control" id="arch04">
+                                    <input type="file" class="form-control" name="arch04" id="arch04">
                                     <label class="input-group-text" for="arch04">Subir</label>
                                 </div>
                             </div>
@@ -415,7 +415,8 @@
             //Evito que se envíe por defecto
             e.preventDefault();
             //Creo un FormData con los datos del mismo formulario
-            formData = new FormData();
+            
+            formData = new FormData(document.getElementById("fichaForm"));
             formData.append("nombreFicha", $('#nombreFicha').val());
             formData.append("latitudFicha", $('#latitudFicha').val());
             formData.append("longitudFicha", $('#longitudFicha').val());
@@ -438,6 +439,7 @@
             formData.append("arch03", $('#arch03').val());
             formData.append("arch04", $('#arch04').val());
             formData.append("idUsuarioReg", <?php echo $_SESSION['idUsuarioReg']; ?>);
+            
 
             //Llamo a la función AJAX de jQuery
             $.ajax({
@@ -451,7 +453,7 @@
                 processData: false,
             }).done(function(echo) {
                 console.log(echo);
-                window.location.href = "inventario.php";
+                (window.location.href = "inventario.php";
                 if (echo !== "") {
                 } else {
                     window.location.replace("");

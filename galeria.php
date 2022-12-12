@@ -66,10 +66,10 @@
                         <a class="nav-link" href="index.php#nosotros">Conócenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php#galeria">Galería</a>
+                        <a class="nav-link" href="index.php#blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php#blog">Blog</a>
+                        <a class="nav-link" href="index.php#galeria">Galería</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php#contacto">Contacto</a>
@@ -126,7 +126,7 @@
 
         <div class="lightbox container-fluid">
             <div class="row">
-                <div id="galeria" class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                <div id="galeriaUsuario" class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
                         <?php if(!empty($developer['arch01'])){ ?>
                             <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" /> 
                         <?php } ?>

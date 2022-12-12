@@ -122,10 +122,10 @@
                         <a class="nav-link" href="index.php#nosotros">Conócenos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php#galeria">Galería</a>
+                        <a class="nav-link" href="index.php#blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php#blog">Blog</a>
+                        <a class="nav-link" href="index.php#galeria">Galería</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php#contacto">Contacto</a>
