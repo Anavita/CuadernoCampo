@@ -1,21 +1,22 @@
 <?php
-    //Se reanuda la sesión
-    session_start();
+//Se reanuda la sesión
+session_start();
 
-    //Se comprueba si el usario está logueado
-    //Si no lo está, se le redirecciona al index
-    //Si lo está, se define el botón de cerrar sesión y la duración de la sesión
-    if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
-        header('Location: index.php');
-    } else {
-        $estado = $_SESSION['usuario'];
-        $salir = '<a href="php/salir.php" target="_self">Salir</a>';
-        require('php/sesiones.php');
-    };
+//Se comprueba si el usario está logueado
+//Si no lo está, se le redirecciona al index
+//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
+if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+    header('Location: index.php');
+} else {
+    $estado = $_SESSION['usuario'];
+    $salir = '<a href="php/salir.php" target="_self">Salir</a>';
+    require('php/sesiones.php');
+};
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -264,45 +265,47 @@
             </div>
         </div>
     </div>
+
+    <!-- Sección Galería Fotográfica · Slider -->
+    <?php
+    include_once("php/conexiones.php");
+
+    $sqlQuery = "SELECT arch01 FROM ficha";
+
+    $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:" . mysqli_error($conexion));
+    ?>
     
-      <!-- Sección Galería Fotográfica · Slider -->
-      <?php
+    <div class="container" id="galeria">
+        <div class="row">
+            <div class="col-12 col-lg-12 galeria-box">
+                <h2>Galería</h2>
+                <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                    <?php
+                    $contador = mysqli_num_rows($resultSet);
 
-include_once("php/conexiones.php");
+                    while ($developer = mysqli_fetch_assoc($resultSet)) {   ?>
 
-$sqlQuery = "SELECT arch01 FROM ficha";
-
-$resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:". mysqli_error($conexion));
-
-?>
-        <div class="container" id="galeria">
-            <div class="row">
-                <div class="col-12 col-lg-12 galeria-box">
-                        <h2>Galería</h2>
-                            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-                            <?php 
-                            $contador = mysqli_num_rows($resultSet);
-                                                     
-                            while( $developer = mysqli_fetch_assoc($resultSet) ) {   ?>  
-
-                                <div class="carousel-inner">
-                                    <div class="carousel-item <?php if($contador == 1) {echo "active";}?>">                                            
-                                        <img class="d-block w-100" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" /> 
-                                    </div>
-                                </div>
-                                <?php $contador--; } ?>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>                               
+                        <div class="carousel-inner">
+                            <div class="carousel-item <?php if ($contador == 1) {
+                                                            echo "active";
+                                                        } ?>">
+                                <img class="d-block w-100" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" />
+                            </div>
+                        </div>
+                    <?php $contador--;
+                    } ?>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
 
     <!--  Sección "Contacto" -->
     <div class="contacto-container section-container" id="contacto">

@@ -1,20 +1,21 @@
 <?php
-    //Se reanuda la sesión
-    session_start();
+//Se reanuda la sesión
+session_start();
 
-    //Se comprueba si el usario está logueado
-    //Si no lo está, se le redirecciona al index
-    //Si lo está, se define el botón de cerrar sesión y la duración de la sesión
-    if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
-        header('Location: index.php');
-    } else {
-        $estado = $_SESSION['usuario'];
-        $salir = '<a href="php/salir.php" target="_self">Salir</a>';
-        require('php/sesiones.php');
-    };
+//Se comprueba si el usario está logueado
+//Si no lo está, se le redirecciona al index
+//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
+if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+    header('Location: index.php');
+} else {
+    $estado = $_SESSION['usuario'];
+    $salir = '<a href="php/salir.php" target="_self">Salir</a>';
+    require('php/sesiones.php');
+};
 ?>
 <!doctype html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -269,7 +270,7 @@
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" name="arch02" id="arch02">
-                                    <label class="input-group-text"for="arch02">Subir</label>
+                                    <label class="input-group-text" for="arch02">Subir</label>
                                 </div>
                             </div>
                         </div>
@@ -412,54 +413,53 @@
     <script>
         //Cuando el formulario con ID #fichaForm se envíe...
         $("#fichaForm").on("submit", function(e) {
-            //Evito que se envíe por defecto
-            e.preventDefault();
-            //Creo un FormData con los datos del mismo formulario
-            
-            formData = new FormData(document.getElementById("fichaForm"));
-            formData.append("nombreFicha", $('#nombreFicha').val());
-            formData.append("latitudFicha", $('#latitudFicha').val());
-            formData.append("longitudFicha", $('#longitudFicha').val());
-            formData.append("fechaFicha", $('#fechaFicha').val());
-            formData.append("horaFicha", $('#horaFicha').val());
-            formData.append("cieloFicha", $('#cieloFicha').val());
-            formData.append("climaFicha", $('#climaFicha').val());
-            formData.append("nomEspFicha", $('#nomEspFicha').val());
-            formData.append("nomCieFicha", $('#nomCieFicha').val());
-            formData.append("vertInvertFicha", $('#vertInvertFicha').val());
-            formData.append("alimentFicha", $('#alimentFicha').val());
-            formData.append("desarrolloFicha", $('#desarrolloFicha').val());
-            formData.append("habitatFicha", $('#habitatFicha').val());
-            formData.append("generoFicha", $('#generoFicha').val());
-            formData.append("tamanoFicha", $('#tamanoFicha').val());
-            formData.append("descripFicha", $('#descripFicha').val());
-            formData.append("comportFicha", $('#comportFicha').val());
-            formData.append("arch01", $('#arch01').val());
-            formData.append("arch02", $('#arch02').val());
-            formData.append("arch03", $('#arch03').val());
-            formData.append("arch04", $('#arch04').val());
-            formData.append("idUsuarioReg", <?php echo $_SESSION['idUsuarioReg']; ?>);
-            
+                    //Evito que se envíe por defecto
+                    e.preventDefault();
+                    //Creo un FormData con los datos del mismo formulario
 
-            //Llamo a la función AJAX de jQuery
-            $.ajax({
-                //Defino la URL del archivo al cual se va a enviar los datos
-                url: "php/registroFicha.php",
-                type: "POST",
-                dataType: "HTML",
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-            }).done(function(echo) {
-                console.log(echo);
-                (window.location.href = "inventario.php";
-                if (echo !== "") {
-                } else {
-                    window.location.replace("");
-                }
-            });
-        });
+                    formData = new FormData(document.getElementById("fichaForm"));
+                    formData.append("nombreFicha", $('#nombreFicha').val());
+                    formData.append("latitudFicha", $('#latitudFicha').val());
+                    formData.append("longitudFicha", $('#longitudFicha').val());
+                    formData.append("fechaFicha", $('#fechaFicha').val());
+                    formData.append("horaFicha", $('#horaFicha').val());
+                    formData.append("cieloFicha", $('#cieloFicha').val());
+                    formData.append("climaFicha", $('#climaFicha').val());
+                    formData.append("nomEspFicha", $('#nomEspFicha').val());
+                    formData.append("nomCieFicha", $('#nomCieFicha').val());
+                    formData.append("vertInvertFicha", $('#vertInvertFicha').val());
+                    formData.append("alimentFicha", $('#alimentFicha').val());
+                    formData.append("desarrolloFicha", $('#desarrolloFicha').val());
+                    formData.append("habitatFicha", $('#habitatFicha').val());
+                    formData.append("generoFicha", $('#generoFicha').val());
+                    formData.append("tamanoFicha", $('#tamanoFicha').val());
+                    formData.append("descripFicha", $('#descripFicha').val());
+                    formData.append("comportFicha", $('#comportFicha').val());
+                    formData.append("arch01", $('#arch01').val());
+                    formData.append("arch02", $('#arch02').val());
+                    formData.append("arch03", $('#arch03').val());
+                    formData.append("arch04", $('#arch04').val());
+                    formData.append("idUsuarioReg", <?php echo $_SESSION['idUsuarioReg']; ?>);
+
+
+                    //Llamo a la función AJAX de jQuery
+                    $.ajax({
+                        //Defino la URL del archivo al cual se va a enviar los datos
+                        url: "php/registroFicha.php",
+                        type: "POST",
+                        dataType: "HTML",
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                    }).done(function(echo) {
+                            console.log(echo);
+                            (window.location.href = "inventario.php");
+                                if (echo !== "") {} else {
+                                    window.location.replace("");
+                                }
+                            });
+                    });
     </script>
 
 </body>

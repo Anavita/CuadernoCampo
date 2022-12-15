@@ -1,21 +1,22 @@
 <?php
-    //Se reanuda la sesión
-    session_start();
+//Se reanuda la sesión
+session_start();
 
-    //Se comprueba si el usario está logueado
-    //Si no lo está, se le redirecciona al index
-    //Si lo está, se define el botón de cerrar sesión y la duración de la sesión
-    if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
-        header('Location: index.php');
-    } else {
-        $estado = $_SESSION['usuario'];
-        $salir = '<a href="php/salir.php" target="_self">Salir</a>';
-        require('php/sesiones.php');
-    };
+//Se comprueba si el usario está logueado
+//Si no lo está, se le redirecciona al index
+//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
+if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+    header('Location: index.php');
+} else {
+    $estado = $_SESSION['usuario'];
+    $salir = '<a href="php/salir.php" target="_self">Salir</a>';
+    require('php/sesiones.php');
+};
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,63 +31,84 @@
     <script src="tablainventario/bootstable.js"></script>
 
     <script>
-    $( document ).ready(function() {
-    $('#edicionTabla').SetEditable({
-        columnsEd: "0,1,2,3,4",
-        columnsEd2: "0,1,2,3,4",
-        onEdit: function(columnsEd) {
-            console.log(columnsEd[0].childNodes[1].innerHTML);
-            console.log(columnsEd[0].childNodes[3].innerHTML);
-            console.log(columnsEd[0].childNodes[5].innerHTML);
-            console.log(columnsEd[0].childNodes[7].innerHTML);
-            console.log(columnsEd2[2].childNodes[9].innerHTML);
+        $(document).ready(function() {
+            $('#edicionTabla').SetEditable({
+                columnsEd: "0,1,2,3,4",
+                columnsEd2: "0,1,2,3,4",
+                onEdit: function(columnsEd) {
+                    console.log(columnsEd[0].childNodes[1].innerHTML);
+                    console.log(columnsEd[0].childNodes[3].innerHTML);
+                    console.log(columnsEd[0].childNodes[5].innerHTML);
+                    console.log(columnsEd[0].childNodes[7].innerHTML);
+                    console.log(columnsEd2[2].childNodes[9].innerHTML);
 
 
-          var idF = columnsEd[0].childNodes[1].innerHTML;
-          var nombreF = columnsEd[0].childNodes[3].innerHTML;
-          var latitud = columnsEd[0].childNodes[5].innerHTML;
-          var longitud = columnsEd[0].childNodes[7].innerHTML;
-          var fecha = columnsEd[0].childNodes[9].innerHTML;
-          var hora = columnsEd[0].childNodes[11].innerHTML;
-          var cielo = columnsEd[0].childNodes[13].innerHTML;
-          var clima = columnsEd[0].childNodes[15].innerHTML;
-          var nomEsp = columnsEd[0].childNodes[17].innerHTML;
-          var nomCie = columnsEd[0].childNodes[19].innerHTML;
-          var vertInvert = columnsEd[0].childNodes[21].innerHTML;
-          var aliment = columnsEd[0].childNodes[23].innerHTML;
-          var desarrollo = columnsEd[0].childNodes[25].innerHTML;
-          var habitat = columnsEd[0].childNodes[27].innerHTML;
-          var genero = columnsEd[0].childNodes[29].innerHTML;
-          var tamano = columnsEd[0].childNodes[31].innerHTML;
-          var descrip = columnsEd[0].childNodes[33].innerHTML;
-          var comport = columnsEd[0].childNodes[35].innerHTML;
-          $.ajax({
-              type: 'POST',			
-              url : "tablainventario/acciontabla.php",	
-              dataType: "json",					
-              data: {idF:idF, nomF:nomF, latitud:latitud, longitud:longitud, fecha:fecha, hora:hora, cielo:cielo, clima:clima, nomEsp:nomEsp, nomCie:nomCie, vertInvert:vertInvert, aliment:aliment, desarrollo:desarrollo, habitat:habitat, genero:genero, tamano:tamano, descrip:descrip, comport:comport, action:'edit'},			
-              success: function (response) {
-                  if(response.status) {
-                  }						
-              }
-          });
-        },
-        onBeforeDelete: function(columnsEd) {
-        var idF = columnsEd[0].childNodes[1].innerHTML;
-        $.ajax({
-              type: 'POST',			
-              url : "acciontabla.php",
-              dataType: "json",					
-              data: {idF:idF, action:'delete'},			
-              success: function (response) {
-                  if(response.status) {
-                  }			
-              }
-          });
-        },
-      });
-  });
-  </script>
+                    var idF = columnsEd[0].childNodes[1].innerHTML;
+                    var nombreF = columnsEd[0].childNodes[3].innerHTML;
+                    var latitud = columnsEd[0].childNodes[5].innerHTML;
+                    var longitud = columnsEd[0].childNodes[7].innerHTML;
+                    var fecha = columnsEd[0].childNodes[9].innerHTML;
+                    var hora = columnsEd[0].childNodes[11].innerHTML;
+                    var cielo = columnsEd[0].childNodes[13].innerHTML;
+                    var clima = columnsEd[0].childNodes[15].innerHTML;
+                    var nomEsp = columnsEd[0].childNodes[17].innerHTML;
+                    var nomCie = columnsEd[0].childNodes[19].innerHTML;
+                    var vertInvert = columnsEd[0].childNodes[21].innerHTML;
+                    var aliment = columnsEd[0].childNodes[23].innerHTML;
+                    var desarrollo = columnsEd[0].childNodes[25].innerHTML;
+                    var habitat = columnsEd[0].childNodes[27].innerHTML;
+                    var genero = columnsEd[0].childNodes[29].innerHTML;
+                    var tamano = columnsEd[0].childNodes[31].innerHTML;
+                    var descrip = columnsEd[0].childNodes[33].innerHTML;
+                    var comport = columnsEd[0].childNodes[35].innerHTML;
+                    $.ajax({
+                        type: 'POST',
+                        url: "tablainventario/acciontabla.php",
+                        dataType: "json",
+                        data: {
+                            idF: idF,
+                            nomF: nomF,
+                            latitud: latitud,
+                            longitud: longitud,
+                            fecha: fecha,
+                            hora: hora,
+                            cielo: cielo,
+                            clima: clima,
+                            nomEsp: nomEsp,
+                            nomCie: nomCie,
+                            vertInvert: vertInvert,
+                            aliment: aliment,
+                            desarrollo: desarrollo,
+                            habitat: habitat,
+                            genero: genero,
+                            tamano: tamano,
+                            descrip: descrip,
+                            comport: comport,
+                            action: 'edit'
+                        },
+                        success: function(response) {
+                            if (response.status) {}
+                        }
+                    });
+                },
+                onBeforeDelete: function(columnsEd) {
+                    var idF = columnsEd[0].childNodes[1].innerHTML;
+                    $.ajax({
+                        type: 'POST',
+                        url: "acciontabla.php",
+                        dataType: "json",
+                        data: {
+                            idF: idF,
+                            action: 'delete'
+                        },
+                        success: function(response) {
+                            if (response.status) {}
+                        }
+                    });
+                },
+            });
+        });
+    </script>
 
     <!-- Vinculación fichero CSS -->
     <link rel="stylesheet" href="style.css" />
@@ -175,31 +197,31 @@
     <!--BODY -->
     <h1>Inventario</h1>
     <?php
-        include_once("php/conexiones.php");
-        $sqlQuery = "SELECT idFicha, nombreFicha, latitudFicha, longitudFicha, fechaFicha, horaFicha, cieloFicha, 
+    include_once("php/conexiones.php");
+    $sqlQuery = "SELECT idFicha, nombreFicha, latitudFicha, longitudFicha, fechaFicha, horaFicha, cieloFicha, 
                             climaFicha, nomEspFicha, nomCieFicha, vertInvertFicha, alimentFicha, desarrolloFicha, 
                             habitatFicha, generoFicha, tamanoFicha, descripFicha, comportFicha 
-                            FROM ficha WHERE idRegistro =" .$_SESSION['idUsuarioReg'];
-        
-        $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:". mysqli_error($conexion));
-        
-        while( $developer = mysqli_fetch_assoc($resultSet) ) {?>
-    
+                            FROM ficha WHERE idRegistro =" . $_SESSION['idUsuarioReg'];
+
+    $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:" . mysqli_error($conexion));
+
+    while ($developer = mysqli_fetch_assoc($resultSet)) { ?>
+
         <table id="edicionTabla" class="table table-bordered table-sm">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Nombre Ficha</th>
                     <th>Latitud</th>
-                    <th>Longitud</th>													
+                    <th>Longitud</th>
                 </tr>
             </thead>
             <tbody>
-                <tr id="<?php echo $developer ['idFicha']; ?>">
-                <td><?php echo $developer ['idFicha']; ?></td>
-                <td><?php echo $developer ['nombreFicha']; ?></td>
-                <td><?php echo $developer ['latitudFicha']; ?></td>
-                <td><?php echo $developer ['longitudFicha']; ?></td>  				   				   				  
+                <tr id="<?php echo $developer['idFicha']; ?>">
+                    <td><?php echo $developer['idFicha']; ?></td>
+                    <td><?php echo $developer['nombreFicha']; ?></td>
+                    <td><?php echo $developer['latitudFicha']; ?></td>
+                    <td><?php echo $developer['longitudFicha']; ?></td>
                 </tr>
             </tbody>
             <thead>
@@ -207,15 +229,15 @@
                     <th>Fecha</th>
                     <th>Hora</th>
                     <th>Estado del cielo</th>
-                    <th>Clima</th>													
+                    <th>Clima</th>
                 </tr>
             </thead>
-            <tbody>       
-                <tr id="<?php echo $developer ['idFicha']; ?>">
-                <td><?php echo $developer ['fechaFicha']; ?></td>
-                <td><?php echo $developer ['horaFicha']; ?></td>
-                <td><?php echo $developer ['cieloFicha']; ?></td>
-                <td><?php echo $developer ['climaFicha']; ?></td>  				   				   				  
+            <tbody>
+                <tr id="<?php echo $developer['idFicha']; ?>">
+                    <td><?php echo $developer['fechaFicha']; ?></td>
+                    <td><?php echo $developer['horaFicha']; ?></td>
+                    <td><?php echo $developer['cieloFicha']; ?></td>
+                    <td><?php echo $developer['climaFicha']; ?></td>
                 </tr>
             </tbody>
             <thead>
@@ -223,15 +245,15 @@
                     <th>Nombre común de la especie</th>
                     <th>Nombre científico de la especie</th>
                     <th>Clasificación de la especie</th>
-                    <th>Tipo de alimentación</th>													
+                    <th>Tipo de alimentación</th>
                 </tr>
             </thead>
             <tbody>
-                <tr id="<?php echo $developer ['idFicha']; ?>">
-                <td><?php echo $developer ['nomEspFicha']; ?></td>
-                <td><?php echo $developer ['nomCieFicha']; ?></td>
-                <td><?php echo $developer ['vertInvertFicha']; ?></td>
-                <td><?php echo $developer ['alimentFicha']; ?></td>  				   				   				  
+                <tr id="<?php echo $developer['idFicha']; ?>">
+                    <td><?php echo $developer['nomEspFicha']; ?></td>
+                    <td><?php echo $developer['nomCieFicha']; ?></td>
+                    <td><?php echo $developer['vertInvertFicha']; ?></td>
+                    <td><?php echo $developer['alimentFicha']; ?></td>
                 </tr>
             </tbody>
             <thead>
@@ -239,33 +261,33 @@
                     <th>Desarrollo embrionario</th>
                     <th>Hábitat</th>
                     <th>Género</th>
-                    <th>Tamaño</th>													
+                    <th>Tamaño</th>
                 </tr>
             </thead>
             <tbody>
-                <tr id="<?php echo $developer ['idFicha']; ?>">
-                <td><?php echo $developer ['desarrolloFicha']; ?></td>
-                <td><?php echo $developer ['habitatFicha']; ?></td>
-                <td><?php echo $developer ['generoFicha']; ?></td>
-                <td><?php echo $developer ['tamanoFicha']; ?></td>  				   				   				  
+                <tr id="<?php echo $developer['idFicha']; ?>">
+                    <td><?php echo $developer['desarrolloFicha']; ?></td>
+                    <td><?php echo $developer['habitatFicha']; ?></td>
+                    <td><?php echo $developer['generoFicha']; ?></td>
+                    <td><?php echo $developer['tamanoFicha']; ?></td>
                 </tr>
             </tbody>
             <thead>
                 <tr>
                     <th colspan="2">Descripción</th>
-                    <th colspan="2">Comportamiento</th>											
+                    <th colspan="2">Comportamiento</th>
                 </tr>
             </thead>
             <tbody>
-                <tr id="<?php echo $developer ['idFicha']; ?>">
-                <td colspan="2"><?php echo $developer ['descripFicha']; ?></td>
-                <td colspan="2"><?php echo $developer ['comportFicha']; ?></td>			   				   				  
+                <tr id="<?php echo $developer['idFicha']; ?>">
+                    <td colspan="2"><?php echo $developer['descripFicha']; ?></td>
+                    <td colspan="2"><?php echo $developer['comportFicha']; ?></td>
                 </tr>
             </tbody>
         </table>
-        <?php } ?>
-        <br>
-        <br>
+    <?php } ?>
+    <br>
+    <br>
 
     <!-- FOOTER -->
     <footer class="text-center text-lg-start bg-secondary text-muted">

@@ -1,9 +1,9 @@
 <?php
-    //Inicio de sesión
-    session_start();
+//Inicio de sesión
+session_start();
 
-    //Petición al archivo que controla la duración de las sesiones
-    require('php/sesiones.php');
+//Petición al archivo que controla la duración de las sesiones
+require('php/sesiones.php');
 ?>
 
 <!DOCTYPE html>
@@ -331,42 +331,45 @@
     <!-- Sección Galería Fotográfica · Slider -->
     <?php
 
-        include_once("php/conexiones.php");
+    include_once("php/conexiones.php");
 
-        $sqlQuery = "SELECT arch01 FROM ficha";
-        
-        $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:". mysqli_error($conexion));
-        
-        ?>
-                <div class="container" id="galeria">
-                    <div class="row">
-                        <div class="col-12 col-lg-12 galeria-box">
-                                <h2>Galería</h2>
-                                    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-                                    <?php 
-                                    $contador = mysqli_num_rows($resultSet);
-                                                             
-                                    while( $developer = mysqli_fetch_assoc($resultSet) ) {   ?>  
+    $sqlQuery = "SELECT arch01 FROM ficha";
 
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item <?php if($contador == 1) {echo "active";}?>">                                            
-                                                <img class="d-block w-100" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" /> 
-                                            </div>
-                                        </div>
-                                        <?php $contador--; } ?>
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
-                                    </div>                               
+    $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:" . mysqli_error($conexion));
+
+    ?>
+    <div class="container" id="galeria">
+        <div class="row">
+            <div class="col-12 col-lg-12 galeria-box">
+                <h2>Galería</h2>
+                <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                    <?php
+                    $contador = mysqli_num_rows($resultSet);
+
+                    while ($developer = mysqli_fetch_assoc($resultSet)) {   ?>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item <?php if ($contador == 1) {
+                                                            echo "active";
+                                                        } ?>">
+                                <img class="d-block w-100" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" />
+                            </div>
                         </div>
-                    </div>
+                    <?php $contador--;
+                    } ?>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-    
+            </div>
+        </div>
+    </div>
+
 
     <!--  Sección "Contacto" -->
     <div class="contacto-container section-container" id="contacto">

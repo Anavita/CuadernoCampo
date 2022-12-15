@@ -1,21 +1,22 @@
 <?php
-    //Se reanuda la sesión
-    session_start();
+//Se reanuda la sesión
+session_start();
 
-    //Se comprueba si el usario está logueado
-    //Si no lo está, se le redirecciona al index
-    //Si lo está, se define el botón de cerrar sesión y la duración de la sesión
-    if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
-        header('Location: index.php');
-    } else {
-        $estado = $_SESSION['usuario'];
-        $salir = '<a href="php/salir.php" target="_self">Salir</a>';
-        require('php/sesiones.php');
-    };
+//Se comprueba si el usario está logueado
+//Si no lo está, se le redirecciona al index
+//Si lo está, se define el botón de cerrar sesión y la duración de la sesión
+if (!isset($_SESSION['usuario']) and $_SESSION['estado'] != 'Autenticado') {
+    header('Location: index.php');
+} else {
+    $estado = $_SESSION['usuario'];
+    $salir = '<a href="php/salir.php" target="_self">Salir</a>';
+    require('php/sesiones.php');
+};
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -116,33 +117,32 @@
     <!-- Contenedor de la galería fotográfica -->
     <?php
 
-        include_once("php/conexiones.php");
+    include_once("php/conexiones.php");
 
-        $sqlQuery = "SELECT arch01, arch02, arch03, arch04 FROM ficha WHERE idRegistro =" .$_SESSION['idUsuarioReg'];
-        
-        $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:". mysqli_error($conexion));
-        
-        while( $developer = mysqli_fetch_assoc($resultSet) ) {?>
+    $sqlQuery = "SELECT arch01, arch02, arch03, arch04 FROM ficha WHERE idRegistro =" . $_SESSION['idUsuarioReg'];
+
+    $resultSet = mysqli_query($conexion, $sqlQuery) or die("Error de la base de datos:" . mysqli_error($conexion));
+
+    while ($developer = mysqli_fetch_assoc($resultSet)) { ?>
 
         <div class="lightbox container-fluid">
             <div class="row">
                 <div id="galeriaUsuario" class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
-                        <?php if(!empty($developer['arch01'])){ ?>
-                            <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" /> 
-                        <?php } ?>
-                        <?php if(!empty($developer['arch02'])){ ?>
-                        <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch02']); ?>" /> 
-                        <?php } ?>
-                        <?php if(!empty($developer['arch03'])){ ?>
-                        <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch03']); ?>" /> 
-                        <?php } ?>
-                        <?php if(!empty($developer['arch04'])){ ?>
-                        <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch04']); ?>" /> 
-                        <?php } ?>
+                    <?php if (!empty($developer['arch01'])) { ?>
+                        <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch01']); ?>" />
+                    <?php } ?>
+                    <?php if (!empty($developer['arch02'])) { ?>
+                        <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch02']); ?>" />
+                    <?php } ?>
+                    <?php if (!empty($developer['arch03'])) { ?>
+                        <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch03']); ?>" />
+                    <?php } ?>
+                    <?php if (!empty($developer['arch04'])) { ?>
+                        <img class="img-fluid" src="data:image/jpg; base64, <?php echo base64_encode($developer['arch04']); ?>" />
+                    <?php } ?>
                 </div>
             </div>
         </div>
-        
     <?php } ?>
 
 
